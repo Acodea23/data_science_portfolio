@@ -2,47 +2,51 @@
 title: "About Me"
 ---
 
-## Background
+## TLDR
 
 Write a brief introduction about yourself here. Include:
+
 
 - Your academic background
 - Your interest in data science
 - Your career goals
 - Any relevant experience or projects
 
+I'm from Texas and am studying statistics with a minor in mathematics at Brigham Young University. I have co-authored an academic paper in math, and I am currently working on another paper in the field of statistics. Some projects I've worked on include metal fatigue analysis, and vaccine trends based on political affiliation. I want to continue to develop models and statistical processes for complex problems. I would love to chat about your favorite data science projects!
+
 ## Education
 
-- **[Your Degree]** - [University Name], [Year]
-- **Relevant Coursework**: Statistics, Data Analysis, Programming, etc.
+- **BS Statistics, Minor Mathematics** - Brigham Young University, 2027
+- **Relevant Coursework**: Data Science Process, Machine Learning, Applied Programming, Linear Regression, 
+Probability and Inference, Statistical Modeling, Bayesian Reliability, Spanish
 
 ## Skills & Interests
+Linear Regression, Model Training, Prediction, Longitudinal Data, Model Evaluation
 
 ### Technical Skills
-- **Programming**: Python
+- **Programming**: Python, SQL, R, Excel
 - **Data Analysis**: Pandas, NumPy
-- **Visualization**: Matplotlib, Seaborn
+- **Visualization**: Matplotlib, Seaborn, Tableau, gplot2
 - **Machine Learning**: Scikit-learn
 - **Tools**: Jupyter Notebooks, Git/GitHub
 
 ### Areas of Interest
-- [Your specific interests, e.g., environmental data, healthcare analytics, finance, etc.]
-- [Other areas you're curious about]
+- My main interest is applying statistics to real-world problems. Whatever topic you are passionate about, I want to use data to help you understand it better.
+- Some areas I'm curious about are **agriculture, business, engineering, and sports**.
 
 ## Goals
 
-Describe what you hope to achieve through your data science journey:
+- Understand machine learning algorithms better
+- Publish an academic paper
+- Work as a data science intern
 
-- Short-term learning objectives
-- Long-term career aspirations
-- Types of problems you want to solve
 
 ## Contact
 
-- **Email**: your.email@example.com
-- **GitHub**: [github.com/your-username](https://github.com/your-username)
-- **LinkedIn**: [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
+- **Email**: wilson.matthewg@gmail.com
+- **GitHub**: [Acodea23](https://github.com/Acodea23)
+- **LinkedIn**: [MatthewWilson01](https://linkedin.com/in/matthewwilson01)
 
 ---
 
-*This portfolio showcases my learning progress and projects completed during my data science studies.*
+*This portfolio showcases my learning progress and projects completed during my data science studies. It will be updated over the course of the semester*
