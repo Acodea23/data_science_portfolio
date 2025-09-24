@@ -1,3 +1,8 @@
+~~~
+title : How to handle (model) sensitivity
+format: html
+~~~
+
 # How to handle (model) sensitivity
 words to know: *scalable, bayesian, prior*
 
