@@ -1,3 +1,60 @@
-#How to work with (model) sensitivity in the workplace
+~~~
+
+title : How to handle (model) sensitivity
+format: html
+
+~~~
+words to know: scalable, bayesian, prior
+
+
+When learning to build statisitcal models, the moment the model “fits” the data and your assumptions are met you tend to pat yourself on the back and call it a day. But in the wild, models need to be [scalable](#Scalability). They need to be resistant to our [prior beliefs](#Priors) potentially bleeding into the model. We will consider how sensitivity relates to these 2 topics.
+
+# Scalability
+
+Lets first consider these two models. Both of them predict the dataLets first consider these two models. Both of them accuratly model the data, but how well will they model another data point from the same sample? 
+
+```{R, warning = FALSE}
+library(ggplot2)
+library(splines)
+library(gridExtra)
+
+# Original data
+df <- data.frame(x = c(1, 2, 3, 4), y = c(2, 3, 2.5, 3.5))
+
+# Spline data
+spline_df <- data.frame(x = seq(1, 4, length.out = 100))
+spline_df$y <- predict(smooth.spline(df$x, df$y, df = 4), spline_df$x)$y
+
+# First plot: original model fit
+p1 <- ggplot(df, aes(x, y)) +
+  geom_point(color = "black", size = 3) +
+  geom_smooth(method = "lm", se = FALSE, color = "blue", formula = y ~ x) +
+  geom_line(data = spline_df, aes(x, y), color = "red", linetype = "dashed") +
+  labs(title = "Original Model Fit", x = "X", y = "Y") +
+  theme_minimal()
+
+# Second plot: with new point
+df_new_point <- data.frame(x = 3, y = 3.2)
+p2 <- ggplot(df, aes(x, y)) +
+  geom_point(color = "black", size = 3) +
+  geom_point(data = df_new_point, aes(x, y), color = "green", size = 3) +
+  geom_smooth(method = "lm", se = FALSE, color = "blue", formula = y ~ x) +
+  geom_line(data = spline_df, aes(x, y), color = "red", linetype = "dashed") +
+  labs(title = "Model Fit with New Point", x = "X", y = "Y") +
+  theme_minimal()
+
+# Display side by side
+grid.arrange(p1, p2, ncol = 2)
+
+# This code was produced with the aid of Microsoft copilot
+
+```
+
+Aternate description: Two side-by-side plots comparing model fits. The left plot shows four black data points with a blue linear regression line and a red dashed overfitted curve passing through all points. On the right plot, the original lines remain unchanged. There are the same 4 black data points plus a new green data point. The green point has the same x value as another point, but a different y value. The point lies far from the overfitted curve, but close to the linear regression line.
+
+### Problem
+
+
+### Potential Fix
 
 

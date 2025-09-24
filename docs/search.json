@@ -124,7 +124,7 @@
     "href": "projects/blog_post.html",
     "title": "",
     "section": "",
-    "text": "Code\n\n\n\n\n#How to work with (model) sensitivity in the workplace"
+    "text": "CodeShow All CodeHide All CodeView Source\nwords to know: scalable, bayesian, prior\nWhen learning to build statisitcal models, the moment the model “fits” the data and your assumptions are met you tend to pat yourself on the back and call it a day. But in the wild, models need to be scalable. They need to be resistant to our prior beliefs potentially bleeding into the model. We will consider how sensitivity relates to these 2 topics."
   },
   {
     "objectID": "about.html#tldr",
@@ -132,5 +132,33 @@
     "title": "About Me",
     "section": "",
     "text": "Write a brief introduction about yourself here. Include:\n\nYour academic background\nYour interest in data science\nYour career goals\nAny relevant experience or projects\n\nI’m from Texas and am studying statistics with a minor in mathematics at Brigham Young University. I have co-authored an academic paper in math, and I am currently working on another paper in the field of statistics. Some projects I’ve worked on include metal fatigue analysis, and vaccine trends based on political affiliation. I want to continue to develop models and statistical processes for complex problems. I would love to chat about your favorite data science projects!"
+  },
+  {
+    "objectID": "blog_post.html",
+    "href": "blog_post.html",
+    "title": "",
+    "section": "",
+    "text": "Code\n\n\n\n\n\nHow to handle (model) sensitivity\nwords to know: scalable, bayesian, prior\nWhen learning to build statisitcal models, the moment the model “fits” the data and your assumptions are met you tend to pat yourself on the back and call it a day. But in the wild, models need to be scalable. They need to be resistant to our biases potentially bleeding into the model. We will consider how sensitivity relates to these 2 topics.\n\n\nScalability"
+  },
+  {
+    "objectID": "blog_post.html#words-to-know-scalable-bayesian-prior",
+    "href": "blog_post.html#words-to-know-scalable-bayesian-prior",
+    "title": "",
+    "section": "words to know: scalable, bayesian, prior",
+    "text": "words to know: scalable, bayesian, prior\nWhen learning to build statisitcal models, the moment the model “fits” the data and your assumptions are met you tend to pat yourself on the back and call it a day. But in the wild, models need to be scalable’#Scalability’. They need to be resistant to our biases potentially bleeding into the model. We will consider how sensitivity relates to these 2 topics."
+  },
+  {
+    "objectID": "projects/blog_post.html#problem",
+    "href": "projects/blog_post.html#problem",
+    "title": "",
+    "section": "Problem",
+    "text": "Problem"
+  },
+  {
+    "objectID": "projects/blog_post.html#potential-fix",
+    "href": "projects/blog_post.html#potential-fix",
+    "title": "",
+    "section": "Potential Fix",
+    "text": "Potential Fix"
   }
 ]
