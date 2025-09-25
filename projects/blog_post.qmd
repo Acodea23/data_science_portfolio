@@ -51,16 +51,25 @@ p2 <- ggplot(df, aes(x, y)) +
 grid.arrange(p1, p2, ncol = 2)
 ```
 
-
-<details>
-  <summary>Alternate Image Descriptio</summary>
+Alternate description: 
   Two side-by-side plots comparing model fits. The left plot shows four black data points with a blue linear regression line and a red dashed overfitted curve passing through all points. On the right plot, the original lines remain unchanged. There are the same 4 black data points plus a new green data point. The green point has the same x value as another point, but a different y value. The point lies far from the overfitted curve, but close to the linear regression line.
 
-Alternate description: 
+Although the dotted line appeared to be an exceptional model for the data collected, it doesn't adequately model the whole population. Some model diagnostics will not catch overfitting, and might even tell you that it is an amazing model. In the above example the $\text{MSE} = 0$. Which would be amazing. The problem is that this model isn't flexible enough to accuratly predict future observations, nor to provide correct confidence intervals. We need a model that is more flexible to handle variance in the data.
 
-Althogh the dotted line appeared to be an exceptional model for the data collected, it doesn't adequately model the whole population and can't predict future samples.
+### Problems
 
-### Problem
+Let's discuss a couple potential problems leading to overfitting.
+- [Too many predictors](#predictors)
+- [Multicolliniearity](#multicolliniarity)
+- [Sample size](#sample-size)
+
+#### Predictors
+
+
+#### Multicolliniearity
+
+
+#### Sample Size
 
 
 ### Potential Fix
