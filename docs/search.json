@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Welcome to My Data Science Portfolio",
     "section": "",
-    "text": "Welcome to my data science portfolio! This site shows my journey learning data science and analytics. Here you’ll find projects that demonstrate what I’ve learned and discovered.\n\n\nThis portfolio shows my work learning data science. Each project includes:\n\nMy code with documentation\nVisualizations I created\nWhat I learned and discovered\n\nI built this site using Quarto and host it on GitHub Pages.\n\n\n\n\nProgramming: Python, Pandas for data analysis\nVisualization: Creating charts with Matplotlib and Seaborn\nData Collection: Getting data from files, websites, and APIs\nAnalysis: Finding patterns and answering questions with data\n\n\n\n\n\n\n\nLearn how I explore datasets to find interesting patterns and answer questions.\n\n\n\nSee how I gather data from different sources and prepare it for analysis.\n\n\n\nSee how I tackle a data science project beginning to end.\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
+    "text": "Welcome to my data science portfolio! This site shows my journey learning data science and analytics. Here you’ll find projects that demonstrate what I’ve learned and discovered.\n\n\nThis portfolio shows my work learning data science. Each project includes:\n\nMy code with documentation\nVisualizations I created\nWhat I learned and discovered\n\nI built this site using Quarto and host it on GitHub Pages.\n\n\n\n\nProgramming: Python, Pandas for data analysis\nVisualization: Creating charts with Matplotlib and Seaborn\nData Collection: Getting data from files, websites, and APIs\nAnalysis: Finding patterns and answering questions with data\n\n\n\n\n\n\n\nDescription: A blog post about accounting for model sensitivity\n\n\n\nLearn how I explore datasets to find interesting patterns and answer questions.\n\n\n\nSee how I gather data from different sources and prepare it for analysis.\n\n\n\nSee how I tackle a data science project beginning to end.\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
   },
   {
     "objectID": "index.html#about-this-portfolio",
@@ -25,14 +25,14 @@
     "href": "index.html#my-projects",
     "title": "Welcome to My Data Science Portfolio",
     "section": "",
-    "text": "Learn how I explore datasets to find interesting patterns and answer questions.\n\n\n\nSee how I gather data from different sources and prepare it for analysis.\n\n\n\nSee how I tackle a data science project beginning to end.\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
+    "text": "Description: A blog post about accounting for model sensitivity\n\n\n\nLearn how I explore datasets to find interesting patterns and answer questions.\n\n\n\nSee how I gather data from different sources and prepare it for analysis.\n\n\n\nSee how I tackle a data science project beginning to end.\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
   },
   {
     "objectID": "projects/index.html",
     "href": "projects/index.html",
     "title": "Projects Overview",
     "section": "",
-    "text": "Description: Pick a dataset and explore it to discover insights and answer questions.\n\n\n\nDescription: Find an interesting data source, collect the data, and prepare it for analysis.\n\n\n\nDescription: A comprehensive project that shows off my data science skills.",
+    "text": "Description: A blog post about accounting for model sensitivity\n\n\n\nDescription: Pick a dataset and explore it to discover insights and answer questions.\n\n\n\nDescription: Find an interesting data source, collect the data, and prepare it for analysis.\n\n\n\nDescription: A comprehensive project that shows off my data science skills.",
     "crumbs": [
       "Projects Overview"
     ]
@@ -42,7 +42,7 @@
     "href": "projects/index.html#all-projects",
     "title": "Projects Overview",
     "section": "",
-    "text": "Description: Pick a dataset and explore it to discover insights and answer questions.\n\n\n\nDescription: Find an interesting data source, collect the data, and prepare it for analysis.\n\n\n\nDescription: A comprehensive project that shows off my data science skills.",
+    "text": "Description: A blog post about accounting for model sensitivity\n\n\n\nDescription: Pick a dataset and explore it to discover insights and answer questions.\n\n\n\nDescription: Find an interesting data source, collect the data, and prepare it for analysis.\n\n\n\nDescription: A comprehensive project that shows off my data science skills.",
     "crumbs": [
       "Projects Overview"
     ]
@@ -62,7 +62,7 @@
     "href": "about.html",
     "title": "About Me",
     "section": "",
-    "text": "Write a brief introduction about yourself here. Include:\n\nYour academic background\nYour interest in data science\nYour career goals\nAny relevant experience or projects\n\nI’m from Texas and am studying statistics with a minor in mathematics at Brigham Young University. I have co-authored an academic paper in math, and I am currently working on another paper in the field of statistics. Some projects I’ve worked on include metal fatigue analysis, and vaccine trends based on political affiliation. I want to continue to develop models and statistical processes for complex problems. I would love to chat about your favorite data science projects!"
+    "text": "I’m from Texas and am studying statistics with a minor in mathematics at Brigham Young University. I have co-authored an academic paper in math, and I am currently working on another paper in the field of statistics. Some projects I’ve worked on include metal fatigue analysis, and vaccine trends based on political affiliation. I want to continue to develop models and statistical processes for complex problems. I would love to chat about your favorite data science projects!"
   },
   {
     "objectID": "about.html#background",
@@ -122,16 +122,16 @@
   {
     "objectID": "projects/blog_post.html",
     "href": "projects/blog_post.html",
-    "title": "",
+    "title": "How to handle (model) sensitivity",
     "section": "",
-    "text": "CodeShow All CodeHide All CodeView Source\nwords to know: scalable, bayesian, prior\nWhen learning to build statisitcal models, the moment the model “fits” the data and your assumptions are met you tend to pat yourself on the back and call it a day. But in the wild, models need to be scalable. They need to be resistant to our prior beliefs potentially bleeding into the model. We will consider how sensitivity relates to these 2 topics."
+    "text": "words to know: scalable, bayesian, prior\nWhen learning to build statisitcal models, the moment the model “fits” the data and your assumptions are met you tend to pat yourself on the back and call it a day. But in the wild, models need to be scalable. They need to be resistant to our prior beliefs potentially bleeding into the model. We will consider how sensitivity relates to these 2 topics.\n\nScalability\nLets first consider these two models. Both of them predict the dataLets first consider these two models. Both of them accuratly model the data, but how well will they model another data point from the same sample?\n\n\nCode\n# This code was produced with the aid of Microsoft copilot\nlibrary(ggplot2)\nlibrary(splines)\nlibrary(gridExtra)\n\n# Original data\ndf &lt;- data.frame(x = c(1, 2, 3, 4), y = c(2, 3, 2.5, 3.5))\n\n# Spline data\nspline_df &lt;- data.frame(x = seq(1, 4, length.out = 100))\nspline_df$y &lt;- predict(smooth.spline(df$x, df$y, df = 4), spline_df$x)$y\n\n# First plot: original model fit\np1 &lt;- ggplot(df, aes(x, y)) +\n  geom_point(color = \"black\", size = 3) +\n  geom_smooth(method = \"lm\", se = FALSE, color = \"blue\", formula = y ~ x) +\n  geom_line(data = spline_df, aes(x, y), color = \"red\", linetype = \"dashed\") +\n  labs(title = \"Original Model Fit\", x = \"X\", y = \"Y\") +\n  theme_minimal()\n\n# Second plot: with new point\ndf_new_point &lt;- data.frame(x = 3, y = 3.2)\np2 &lt;- ggplot(df, aes(x, y)) +\n  geom_point(color = \"black\", size = 3) +\n  geom_point(data = df_new_point, aes(x, y), color = \"green\", size = 3) +\n  geom_smooth(method = \"lm\", se = FALSE, color = \"blue\", formula = y ~ x) +\n  geom_line(data = spline_df, aes(x, y), color = \"red\", linetype = \"dashed\") +\n  labs(title = \"Model Fit with New Point\", x = \"X\", y = \"Y\") +\n  theme_minimal()\n\n# Display side by side\ngrid.arrange(p1, p2, ncol = 2)\n\n\n\n\n\n\n\n\n\nAternate description: Two side-by-side plots comparing model fits. The left plot shows four black data points with a blue linear regression line and a red dashed overfitted curve passing through all points. On the right plot, the original lines remain unchanged. There are the same 4 black data points plus a new green data point. The green point has the same x value as another point, but a different y value. The point lies far from the overfitted curve, but close to the linear regression line.\n\nProblem\n\n\nPotential Fix"
   },
   {
     "objectID": "about.html#tldr",
     "href": "about.html#tldr",
     "title": "About Me",
     "section": "",
-    "text": "Write a brief introduction about yourself here. Include:\n\nYour academic background\nYour interest in data science\nYour career goals\nAny relevant experience or projects\n\nI’m from Texas and am studying statistics with a minor in mathematics at Brigham Young University. I have co-authored an academic paper in math, and I am currently working on another paper in the field of statistics. Some projects I’ve worked on include metal fatigue analysis, and vaccine trends based on political affiliation. I want to continue to develop models and statistical processes for complex problems. I would love to chat about your favorite data science projects!"
+    "text": "I’m from Texas and am studying statistics with a minor in mathematics at Brigham Young University. I have co-authored an academic paper in math, and I am currently working on another paper in the field of statistics. Some projects I’ve worked on include metal fatigue analysis, and vaccine trends based on political affiliation. I want to continue to develop models and statistical processes for complex problems. I would love to chat about your favorite data science projects!"
   },
   {
     "objectID": "blog_post.html",
