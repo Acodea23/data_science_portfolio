@@ -4,14 +4,6 @@ title: "About Me"
 
 ## TLDR
 
-Write a brief introduction about yourself here. Include:
-
-
-- Your academic background
-- Your interest in data science
-- Your career goals
-- Any relevant experience or projects
-
 I'm from Texas and am studying statistics with a minor in mathematics at Brigham Young University. I have co-authored an academic paper in math, and I am currently working on another paper in the field of statistics. Some projects I've worked on include metal fatigue analysis, and vaccine trends based on political affiliation. I want to continue to develop models and statistical processes for complex problems. I would love to chat about your favorite data science projects!
 
 ## Education

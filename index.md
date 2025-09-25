@@ -28,6 +28,11 @@ I built this site using [Quarto](https://quarto.org/) and host it on [GitHub Pag
 ::: {.grid}
 
 ::: {.g-col-6}
+### [Sensitivity Blog](blog_post.qmd)
+**Description**: A blog post about accounting for model sensitivity
+:::
+
+::: {.g-col-6}
 ### [Data Exploration Project](projects/eda.qmd)
 Learn how I explore datasets to find interesting patterns and answer questions.
 :::

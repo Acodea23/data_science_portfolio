@@ -4,6 +4,9 @@ title: "Projects Overview"
 
 ## All Projects
 
+### [Sensitivity Blog](blog_post.qmd)
+**Description**: A blog post about accounting for model sensitivity
+
 ### [Exploratory Data Analysis Project](eda.qmd)
 **Description**: Pick a dataset and explore it to discover insights and answer questions.
 
@@ -12,3 +15,5 @@ title: "Projects Overview"
 
 ### [Final Project](final-project.qmd)
 **Description**: A comprehensive project that shows off my data science skills.
+
+
