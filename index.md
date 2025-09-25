@@ -28,7 +28,7 @@ I built this site using [Quarto](https://quarto.org/) and host it on [GitHub Pag
 ::: {.grid}
 
 ::: {.g-col-6}
-### [Sensitivity Blog](blog_post.qmd)
+### [Sensitivity Blog](projects/blog_post.qmd)
 A blog post about accounting for model sensitivity
 :::
 

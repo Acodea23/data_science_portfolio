@@ -58,6 +58,8 @@ grid.arrange(p1, p2, ncol = 2)
 
 Alternate description: 
 
+Althogh the dotted line appeared to be an exceptional model for the data collected, it doesn't adequately model the whole population and can't predict future samples.
+
 ### Problem
 
 
