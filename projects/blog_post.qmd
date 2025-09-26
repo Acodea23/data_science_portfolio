@@ -54,6 +54,7 @@ grid.arrange(p1, p2, ncol = 2)
 <details>
   <summary>Click for alternate description</summary>
   Two side-by-side plots comparing model fits. The left plot shows four black data points with a blue linear regression line and a red dashed overfitted curve passing through all points. On the right plot, the original lines remain unchanged. There are the same 4 black data points plus a new green data point. The green point has the same x value as another point, but a different y value. The point lies far from the overfitted curve, but close to the linear regression line.
+</details>
   
 
 Although the dotted line appeared to be an exceptional model for the data collected, it doesn't adequately model the whole population. Some model diagnostics will not catch overfitting, and might even tell you that it is an amazing model. In the above example the $\text{MSE} = 0$. Which would be amazing. The problem is that this model isn't flexible enough to accuratly predict future observations, nor to provide correct confidence intervals. We need a model that is more flexible to handle variance in the data.
@@ -61,16 +62,28 @@ Although the dotted line appeared to be an exceptional model for the data collec
 ### Problems
 
 Let's discuss a couple potential problems leading to overfitting.
-- [Too many predictors](#predictors)
-- [Multicolliniearity](#multicolliniarity)
-- [Sample size](#sample-size)
+
++ [Too many predictors](#predictors)
++ [Multicollinearity](#multicolliniarity)
++ [Sample size](#sample-size)
 
 #### Predictors
-In a world saturated with data, sometimes **less is more**. Especially when it comes to the number of predictors we use. 
+  In a world saturated with data, sometimes **less is more**. Especially when it comes to the number of predictors we use. When I say predictors, I am talking about how many variables are used to predict our value of interest. As data scientists, we're presensted with all the data collected. It is up to us to sift through the information available and to select the variables that are necessary to answer our questions. If we have to many predictor variables in our model we run the risk of finding significance that isn't there. For example, if we are testing significance with $\alpha \le 0.05$ and we test 20 insignificant variables. On average, one of those variables will appear to be statistically significant even though in reality it isn't. [Here's](https://www.explainxkcd.com/wiki/index.php/882:_Significant) a comic about that if you're interested. When we use to many variables we can create a model where the coefficients tied to our variables match the current data set well, but will not match future data. We can sometimes even "take" some of the relationship from one variable and "give" it to another if the two variables are related. This is related to multicollinearity. 
 
 
-#### Multicolliniearity
+#### Multicollinearity
+One of my first realizations about multicollinearity is that I want to saw this word as infrequently as possible. Luckily this is written and not a presentation. To understand multicollinearity, we must first understand that sometimes possible predictive variables are related. For example, if I had a person intereted in contracting me to do data analytics for them and I wanted to determine how much I thought they'd be willing to pay me, I could consider both their income level and their house property values as predictors for getting my service. The problem is that these two variables are often very related. Considersing this mathematically we see that the following equations are equivalent.
 
+I dont think this is right
+$$
+\begin{align}
+  \begin{split}
+  \text{Money Paid} &\propto 2 \cdot \text{Income Level } - 1 \cdot \text{House Property Value} \\
+  \text{Money Paid} &\propto 40 \cdot \text{Income Level } - 20 \cdot \text{House Property Value} 
+  \end{split}
+\end{align}
+
+$$
 
 #### Sample Size
 

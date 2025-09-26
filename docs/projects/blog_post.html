@@ -317,17 +317,23 @@ window.Quarto = {
 <summary>
 Click for alternate description
 </summary>
-<p>Two side-by-side plots comparing model fits. The left plot shows four black data points with a blue linear regression line and a red dashed overfitted curve passing through all points. On the right plot, the original lines remain unchanged. There are the same 4 black data points plus a new green data point. The green point has the same x value as another point, but a different y value. The point lies far from the overfitted curve, but close to the linear regression line.</p>
+Two side-by-side plots comparing model fits. The left plot shows four black data points with a blue linear regression line and a red dashed overfitted curve passing through all points. On the right plot, the original lines remain unchanged. There are the same 4 black data points plus a new green data point. The green point has the same x value as another point, but a different y value. The point lies far from the overfitted curve, but close to the linear regression line.
+</details>
 <p>Although the dotted line appeared to be an exceptional model for the data collected, it doesn’t adequately model the whole population. Some model diagnostics will not catch overfitting, and might even tell you that it is an amazing model. In the above example the <span class="math inline">\(\text{MSE} = 0\)</span>. Which would be amazing. The problem is that this model isn’t flexible enough to accuratly predict future observations, nor to provide correct confidence intervals. We need a model that is more flexible to handle variance in the data.</p>
 <section id="problems" class="level3">
 <h3 class="anchored" data-anchor-id="problems">Problems</h3>
-<p>Let’s discuss a couple potential problems leading to overfitting. - <a href="#predictors">Too many predictors</a> - <a href="#multicolliniarity">Multicolliniearity</a> - <a href="#sample-size">Sample size</a></p>
+<p>Let’s discuss a couple potential problems leading to overfitting.</p>
+<ul>
+<li><a href="#predictors">Too many predictors</a></li>
+<li><a href="#multicolliniarity">Multicollinearity</a></li>
+<li><a href="#sample-size">Sample size</a></li>
+</ul>
 <section id="predictors" class="level4">
 <h4 class="anchored" data-anchor-id="predictors">Predictors</h4>
-<p>In a world saturated with data, sometimes <strong>less is more</strong>. Especially when it comes to the number of predictors we use.</p>
+<p>In a world saturated with data, sometimes <strong>less is more</strong>. Especially when it comes to the number of predictors we use. When I say predictors, I am talking about how many variables are used to predict our value of interest. As data scientists, we’re presensted with all the data collected. It is up to us to sift through the information available and to select the variables that are necessary to answer our questions. If we have to many predictor variables in our model we run the risk of finding significance that isn’t there. For example, if we are testing significance with <span class="math inline">\(\alpha \le 0.05\)</span> and we test 20 insignificant variables. On average, one of those variables will appear to be statistically significant even though in reality it isn’t. <a href="https://www.explainxkcd.com/wiki/index.php/882:_Significant">Here’s</a> a comic about that if you’re interested. We can sometimes even “take” some of the relationship from one variable and “give” it to another if the two variables are related. This is related to multicollinearity.</p>
 </section>
-<section id="multicolliniearity" class="level4">
-<h4 class="anchored" data-anchor-id="multicolliniearity">Multicolliniearity</h4>
+<section id="multicollinearity" class="level4">
+<h4 class="anchored" data-anchor-id="multicollinearity">Multicollinearity</h4>
 </section>
 <section id="sample-size" class="level4">
 <h4 class="anchored" data-anchor-id="sample-size">Sample Size</h4>
@@ -340,7 +346,7 @@ Click for alternate description
 <!-- -->
 
 </section>
-</details></section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -850,29 +856,31 @@ Click for alternate description
 <span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">details</span><span class="dt">&gt;</span></span>
 <span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">summary</span><span class="dt">&gt;</span>Click for alternate description<span class="dt">&lt;/</span><span class="kw">summary</span><span class="dt">&gt;</span></span>
 <span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>  Two side-by-side plots comparing model fits. The left plot shows four black data points with a blue linear regression line and a red dashed overfitted curve passing through all points. On the right plot, the original lines remain unchanged. There are the same 4 black data points plus a new green data point. The green point has the same x value as another point, but a different y value. The point lies far from the overfitted curve, but close to the linear regression line.</span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>Although the dotted line appeared to be an exceptional model for the data collected, it doesn't adequately model the whole population. Some model diagnostics will not catch overfitting, and might even tell you that it is an amazing model. In the above example the $\text{MSE} = 0$. Which would be amazing. The problem is that this model isn't flexible enough to accuratly predict future observations, nor to provide correct confidence intervals. We need a model that is more flexible to handle variance in the data.</span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problems</span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>Let's discuss a couple potential problems leading to overfitting.</span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Too many predictors</span><span class="co">](#predictors)</span></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Multicolliniearity</span><span class="co">](#multicolliniarity)</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Sample size</span><span class="co">](#sample-size)</span></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Predictors</span></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>In a world saturated with data, sometimes **less is more**. Especially when it comes to the number of predictors we use. </span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Multicolliniearity</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>Although the dotted line appeared to be an exceptional model for the data collected, it doesn't adequately model the whole population. Some model diagnostics will not catch overfitting, and might even tell you that it is an amazing model. In the above example the $\text{MSE} = 0$. Which would be amazing. The problem is that this model isn't flexible enough to accuratly predict future observations, nor to provide correct confidence intervals. We need a model that is more flexible to handle variance in the data.</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problems</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>Let's discuss a couple potential problems leading to overfitting.</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span><span class="co">[</span><span class="ot">Too many predictors</span><span class="co">](#predictors)</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span><span class="co">[</span><span class="ot">Multicollinearity</span><span class="co">](#multicolliniarity)</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span><span class="co">[</span><span class="ot">Sample size</span><span class="co">](#sample-size)</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Predictors</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>  In a world saturated with data, sometimes **less is more**. Especially when it comes to the number of predictors we use. When I say predictors, I am talking about how many variables are used to predict our value of interest. As data scientists, we're presensted with all the data collected. It is up to us to sift through the information available and to select the variables that are necessary to answer our questions. If we have to many predictor variables in our model we run the risk of finding significance that isn't there. For example, if we are testing significance with $\alpha \le 0.05$ and we test 20 insignificant variables. On average, one of those variables will appear to be statistically significant even though in reality it isn't. <span class="co">[</span><span class="ot">Here's</span><span class="co">](https://www.explainxkcd.com/wiki/index.php/882:_Significant)</span> a comic about that if you're interested. We can sometimes even "take" some of the relationship from one variable and "give" it to another if the two variables are related. This is related to multicollinearity. </span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Sample Size</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Multicollinearity</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="fu">### Potential Fix</span></span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Sample Size</span></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="fu">### Potential Fix</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
