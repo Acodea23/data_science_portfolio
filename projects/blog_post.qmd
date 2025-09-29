@@ -8,7 +8,7 @@ format:
     toc: true
 ---
 
-When learning to build statistical models, the moment the model “fits” the data and your assumptions are met you tend to pat yourself on the back and call it a day. But in the *wild*, models need to be [flexible](#flexibility). They need to fit not just the data present, but future data. We need to make predictions with this model. We will consider how model sensitivity relates to these flexibility.
+  When learning to build statistical models, the moment the model “fits” the data and your assumptions are met you tend to pat yourself on the back and call it a day. But in the *wild*, models need to be [flexible](#flexibility). They need to fit not just the data present, but future data. We need to make predictions with this model. We will consider how model sensitivity relates to these flexibility.
 
 ## Flexibility
 
