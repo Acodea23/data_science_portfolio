@@ -330,10 +330,18 @@ Two side-by-side plots comparing model fits. The left plot shows four black data
 </ul>
 <section id="predictors" class="level4">
 <h4 class="anchored" data-anchor-id="predictors">Predictors</h4>
-<p>In a world saturated with data, sometimes <strong>less is more</strong>. Especially when it comes to the number of predictors we use. When I say predictors, I am talking about how many variables are used to predict our value of interest. As data scientists, we’re presensted with all the data collected. It is up to us to sift through the information available and to select the variables that are necessary to answer our questions. If we have to many predictor variables in our model we run the risk of finding significance that isn’t there. For example, if we are testing significance with <span class="math inline">\(\alpha \le 0.05\)</span> and we test 20 insignificant variables. On average, one of those variables will appear to be statistically significant even though in reality it isn’t. <a href="https://www.explainxkcd.com/wiki/index.php/882:_Significant">Here’s</a> a comic about that if you’re interested. We can sometimes even “take” some of the relationship from one variable and “give” it to another if the two variables are related. This is related to multicollinearity.</p>
+<p>In a world saturated with data, sometimes <strong>less is more</strong>. Especially when it comes to the number of predictors we use. When I say predictors, I am talking about how many variables are used to predict our value of interest. As data scientists, we’re presensted with all the data collected. It is up to us to sift through the information available and to select the variables that are necessary to answer our questions. If we have to many predictor variables in our model we run the risk of finding significance that isn’t there. For example, if we are testing significance with <span class="math inline">\(\alpha \le 0.05\)</span> and we test 20 insignificant variables. On average, one of those variables will appear to be statistically significant even though in reality it isn’t. <a href="https://www.explainxkcd.com/wiki/index.php/882:_Significant">Here’s</a> a comic about that if you’re interested. When we use to many variables we can create a model where the coefficients tied to our variables match the current data set well, but will not match future data. We can sometimes even “take” some of the relationship from one variable and “give” it to another if the two variables are related. This is related to multicollinearity.</p>
 </section>
 <section id="multicollinearity" class="level4">
 <h4 class="anchored" data-anchor-id="multicollinearity">Multicollinearity</h4>
+<p>One of my first realizations about multicollinearity is that I want to saw this word as infrequently as possible. Luckily this is written and not a presentation. To understand multicollinearity, we must first understand that sometimes possible predictive variables are related. For example, if I had a person intereted in contracting me to do data analytics for them and I wanted to determine how much I thought they’d be willing to pay me, I could consider both their income level and their house property values as predictors for getting my service. The problem is that these two variables are often very related. Considersing this mathematically we see that the following equations are equivalent.</p>
+<p>I dont think this is right $$ <span class="math display">\[\begin{align}
+  \begin{split}
+  \text{Money Paid} &amp;\propto 2 \cdot \text{Income Level } - 1 \cdot \text{House Property Value} \\
+  \text{Money Paid} &amp;\propto 40 \cdot \text{Income Level } - 20 \cdot \text{House Property Value}
+  \end{split}
+\end{align}\]</span></p>
+<p>$$</p>
 </section>
 <section id="sample-size" class="level4">
 <h4 class="anchored" data-anchor-id="sample-size">Sample Size</h4>
@@ -870,17 +878,28 @@ Two side-by-side plots comparing model fits. The left plot shows four black data
 <span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span><span class="co">[</span><span class="ot">Sample size</span><span class="co">](#sample-size)</span></span>
 <span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Predictors</span></span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>  In a world saturated with data, sometimes **less is more**. Especially when it comes to the number of predictors we use. When I say predictors, I am talking about how many variables are used to predict our value of interest. As data scientists, we're presensted with all the data collected. It is up to us to sift through the information available and to select the variables that are necessary to answer our questions. If we have to many predictor variables in our model we run the risk of finding significance that isn't there. For example, if we are testing significance with $\alpha \le 0.05$ and we test 20 insignificant variables. On average, one of those variables will appear to be statistically significant even though in reality it isn't. <span class="co">[</span><span class="ot">Here's</span><span class="co">](https://www.explainxkcd.com/wiki/index.php/882:_Significant)</span> a comic about that if you're interested. We can sometimes even "take" some of the relationship from one variable and "give" it to another if the two variables are related. This is related to multicollinearity. </span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>  In a world saturated with data, sometimes **less is more**. Especially when it comes to the number of predictors we use. When I say predictors, I am talking about how many variables are used to predict our value of interest. As data scientists, we're presensted with all the data collected. It is up to us to sift through the information available and to select the variables that are necessary to answer our questions. If we have to many predictor variables in our model we run the risk of finding significance that isn't there. For example, if we are testing significance with $\alpha \le 0.05$ and we test 20 insignificant variables. On average, one of those variables will appear to be statistically significant even though in reality it isn't. <span class="co">[</span><span class="ot">Here's</span><span class="co">](https://www.explainxkcd.com/wiki/index.php/882:_Significant)</span> a comic about that if you're interested. When we use to many variables we can create a model where the coefficients tied to our variables match the current data set well, but will not match future data. We can sometimes even "take" some of the relationship from one variable and "give" it to another if the two variables are related. This is related to multicollinearity. </span>
 <span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Multicollinearity</span></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>One of my first realizations about multicollinearity is that I want to saw this word as infrequently as possible. Luckily this is written and not a presentation. To understand multicollinearity, we must first understand that sometimes possible predictive variables are related. For example, if I had a person intereted in contracting me to do data analytics for them and I wanted to determine how much I thought they'd be willing to pay me, I could consider both their income level and their house property values as predictors for getting my service. The problem is that these two variables are often very related. Considersing this mathematically we see that the following equations are equivalent.</span>
 <span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Sample Size</span></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="fu">### Potential Fix</span></span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>I dont think this is right</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>\begin{align}</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>  \begin{split}</span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>  \text{Money Paid} &amp;\propto 2 \cdot \text{Income Level } - 1 \cdot \text{House Property Value} <span class="sc">\\</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>  \text{Money Paid} &amp;\propto 40 \cdot \text{Income Level } - 20 \cdot \text{House Property Value} </span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>  \end{split}</span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>\end{align}</span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Sample Size</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="fu">### Potential Fix</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
