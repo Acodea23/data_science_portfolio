@@ -9,7 +9,7 @@
 <meta name="author" content="Matthew Wilon">
 <meta name="dcterms.date" content="2025-09-29">
 
-<title>How to handle (model) sensitivity – Your Name - Data Science Portfolio</title>
+<title>How to fix (model) sensitivity problems – Matthew Wilson - Data Science Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -149,7 +149,7 @@ window.Quarto = {
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Your Name - Data Science Portfolio</span>
+    <span class="navbar-title">Matthew Wilson - Data Science Portfolio</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -225,7 +225,7 @@ window.Quarto = {
   <li><a href="#flexibility" id="toc-flexibility" class="nav-link active" data-scroll-target="#flexibility">Flexibility</a>
   <ul class="collapse">
   <li><a href="#problems" id="toc-problems" class="nav-link" data-scroll-target="#problems">Problems</a></li>
-  <li><a href="#potential-fix" id="toc-potential-fix" class="nav-link" data-scroll-target="#potential-fix">Potential Fix</a></li>
+  <li><a href="#potential-fixes" id="toc-potential-fixes" class="nav-link" data-scroll-target="#potential-fixes">Potential Fixes</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -235,7 +235,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">How to handle (model) sensitivity</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title">How to fix (model) sensitivity problems</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -264,11 +264,10 @@ window.Quarto = {
 </header>
 
 
-<p>words to know: <em>scalable, bayesian, prior</em></p>
-<p>When learning to build statisitcal models, the moment the model “fits” the data and your assumptions are met you tend to pat yourself on the back and call it a day. But in the <em>wild</em>, models need to be <a href="#flexibility">flexible</a>. They need to be resistant to our <a href="#Priors-Beliefs">prior beliefs</a> potentially bleeding into the model. We will consider how sensitivity relates to these 2 topics.</p>
-<section id="flexibility" class="level1">
-<h1>Flexibility</h1>
-<p>Lets first consider these two models. Both of them predict the dataLets first consider these two models. Both of them accuratly model the data, but how well will they model another data point from the same sample?</p>
+<p>When learning to build statistical models, the moment the model “fits” the data and your assumptions are met you tend to pat yourself on the back and call it a day. But in the <em>wild</em>, models need to be <a href="#flexibility">flexible</a>. They need to fit not just the data present, but future data. We need to make predictions with this model. We will consider how model sensitivity relates to these flexibility.</p>
+<section id="flexibility" class="level2">
+<h2 class="anchored" data-anchor-id="flexibility">Flexibility</h2>
+<p>Lets consider these two models. Both of them predict the data. Both of them accuratly model the data, but how well will they model another data point from the same sample? p.s. The code is provided in case you would like to experiment with this youself.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -305,54 +304,62 @@ window.Quarto = {
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Display side by side</span></span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output-display">
-<div>
+</div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="blog_post_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="model_fit_plot.jpeg" title="Comparing model fits" class="img-fluid figure-img"></p>
+<figcaption>Two side-by-side plots comparing model fits. The left plot shows four black data points with a blue linear regression line and a red dashed overfitted curve passing through all points. On the right plot, the original lines remain unchanged. There are the same 4 black data points plus a new green data point. The green point has the same x value as another point, but a different y value. The point lies far from the overfitted curve, but close to the linear regression line.</figcaption>
 </figure>
 </div>
-</div>
-</div>
-<details>
-<summary>
-Click for alternate description
-</summary>
-Two side-by-side plots comparing model fits. The left plot shows four black data points with a blue linear regression line and a red dashed overfitted curve passing through all points. On the right plot, the original lines remain unchanged. There are the same 4 black data points plus a new green data point. The green point has the same x value as another point, but a different y value. The point lies far from the overfitted curve, but close to the linear regression line.
-</details>
-<p>Although the dotted line appeared to be an exceptional model for the data collected, it doesn’t adequately model the whole population. Some model diagnostics will not catch overfitting, and might even tell you that it is an amazing model. In the above example the <span class="math inline">\(\text{MSE} = 0\)</span>. Which would be amazing. The problem is that this model isn’t flexible enough to accuratly predict future observations, nor to provide correct confidence intervals. We need a model that is more flexible to handle variance in the data.</p>
+<p>Although the dotted line appeared to be an exceptional model for the data collected, it doesn’t adequately model the whole population. Some model diagnostics will not catch overfitting, and might even tell you that it is an amazing model. In the above example the <span class="math inline">\(\text{MSE} = 0\)</span>. Which would be amazing. The problem is that this model isn’t flexible enough to accuratly predict future observations, nor to provide correct confidence intervals. It is <em>overfitted</em> to the data. We need a model that is more flexible to handle variance in the data.</p>
 <section id="problems" class="level3">
 <h3 class="anchored" data-anchor-id="problems">Problems</h3>
 <p>Let’s discuss a couple potential problems leading to overfitting.</p>
 <ul>
 <li><a href="#predictors">Too many predictors</a></li>
 <li><a href="#multicolliniarity">Multicollinearity</a></li>
-<li><a href="#sample-size">Sample size</a></li>
 </ul>
 <section id="predictors" class="level4">
 <h4 class="anchored" data-anchor-id="predictors">Predictors</h4>
-<p>In a world saturated with data, sometimes <strong>less is more</strong>. Especially when it comes to the number of predictors we use. When I say predictors, I am talking about how many variables are used to predict our value of interest. As data scientists, we’re presensted with all the data collected. It is up to us to sift through the information available and to select the variables that are necessary to answer our questions. If we have to many predictor variables in our model we run the risk of finding significance that isn’t there. For example, if we are testing significance with <span class="math inline">\(\alpha \le 0.05\)</span> and we test 20 insignificant variables. On average, one of those variables will appear to be statistically significant even though in reality it isn’t. <a href="https://www.explainxkcd.com/wiki/index.php/882:_Significant">Here’s</a> a comic about that if you’re interested. When we use to many variables we can create a model where the coefficients tied to our variables match the current data set well, but will not match future data. We can sometimes even “take” some of the relationship from one variable and “give” it to another if the two variables are related. This is related to multicollinearity.</p>
+<p>In a world saturated with data, sometimes <strong>less is more</strong>. Especially when it comes to the number of predictors we use. As data scientists, we’re presensted with all the data collected. It is up to us to sift through the information available and to select the variables that are necessary to answer our questions. If we have to many predictor variables in our model we run the risk of finding significance that isn’t there. For example, if we are testing significance with <span class="math inline">\(\alpha \le 0.05\)</span> and we test 20 insignificant variables. On average, one of those variables will appear to be statistically significant even though in reality it isn’t. <a href="https://www.explainxkcd.com/wiki/index.php/882:_Significant">Here’s</a> a comic about that if you’re interested. When we use to many variables we can create a model where the coefficients tied to our variables match the current data set well, but will not match future data. We can sometimes even “take” some of the relationship from one variable and “give” it to another if the two variables are related. This is related to multicollinearity.</p>
 </section>
 <section id="multicollinearity" class="level4">
 <h4 class="anchored" data-anchor-id="multicollinearity">Multicollinearity</h4>
-<p>One of my first realizations about multicollinearity is that I want to saw this word as infrequently as possible. Luckily this is written and not a presentation. To understand multicollinearity, we must first understand that sometimes possible predictive variables are related. For example, if I had a person intereted in contracting me to do data analytics for them and I wanted to determine how much I thought they’d be willing to pay me, I could consider both their income level and their house property values as predictors for getting my service. The problem is that these two variables are often very related. Considersing this mathematically we see that the following equations are equivalent.</p>
-<p>I dont think this is right $$ <span class="math display">\[\begin{align}
+<p>One of my first realizations about multicollinearity is that I want to say this word as infrequently as possible. Luckily this is written and not a presentation. To understand multicollinearity, we must first understand that sometimes predictive variables can be related. For example, if I had a person intereted in contracting me to do data analytics for them and I wanted to determine how much I thought they’d be willing to pay me, I could consider both their income level and their house property value as predictors for the money they’d pay. The problem is that these two variables are often very related. Considering this mathematically, we see that the following equations are equivalent.</p>
+<p>$$ <span class="math display">\[\begin{align}
   \begin{split}
-  \text{Money Paid} &amp;\propto 2 \cdot \text{Income Level } - 1 \cdot \text{House Property Value} \\
-  \text{Money Paid} &amp;\propto 40 \cdot \text{Income Level } - 20 \cdot \text{House Property Value}
+  \text{Assume House} &amp;\text{Property Value} = 3*\text{Income } \\
+  \text{Money Paid}_1 &amp;= (\text{Property Value} - \text{Income})/1000 \\
+  \text{Money Paid}_2 &amp;= (4 \cdot \text{Property Value} - 10 \cdot \text{Income})/1000 \\
+  \text{Let Property Value} &amp;= 300000 \text{, Income} = 100000\\
+  \text{Money Paid}_1 &amp;= (300000 - 100000)/1000 = 200 \\
+  \text{Money Paid}_2 &amp;= (4 \cdot 300000 - 10 \cdot 100000)/1000 = 200 \\
   \end{split}
 \end{align}\]</span></p>
 <p>$$</p>
-</section>
-<section id="sample-size" class="level4">
-<h4 class="anchored" data-anchor-id="sample-size">Sample Size</h4>
+<p>We can see that, these 2 equations will produce the same results for a prediction of how much money a person will be willing to pay. This is due to a preexisting relationship between income level and house property value. So in this case, if your model were either of these is would produce the right value. The problem is that one of these equations will produce much different values if there is a slight change in Income or Property value. Since in the “wild” this relationship would often be a correlation and not an exact 3-1 relationship. This means that when making predictions for new data points, or in other words a new customer, your predictions could change rapidly despite small differences between them and an existing customer used to train the model. These 2 variables represent multicollinearity. In situations like these, it is generally better to only use one of your variables to include in the model.</p>
 </section>
 </section>
-<section id="potential-fix" class="level3">
-<h3 class="anchored" data-anchor-id="potential-fix">Potential Fix</h3>
+<section id="potential-fixes" class="level3">
+<h3 class="anchored" data-anchor-id="potential-fixes">Potential Fixes</h3>
+<p>It is clear that these issues can be probematic. Today we will discuss two tools that can be used to help mitigate the chance of these problems. It is important to note that although these tools help, it is important to combine them with critical thinking and a personal understanding of your data set and modeling goals. These methods will help you to select potential models to use and to compare different potential models. I will give you enough information about these techniques to get started and to understand their potential. They are honestly interesting enough to have their own blog posts, so I will just focus on gerneal understanding here.</p>
+<ul>
+<li><a href="#regularization-methods">Regularization Methods</a></li>
+<li><a href="#cross-validation">Cross Validation</a></li>
+</ul>
+<section id="regularization-methods" class="level4">
+<h4 class="anchored" data-anchor-id="regularization-methods">Regularization Methods</h4>
+<p>Regularization methods help us to shrink our coefficents to avoid inflated coefficients that increase the variablility induced by slight changes in the data. This can avoid the issue demonstrated in the <a href="#multicollinearity">multicollinearity</a> example. These methods penalize large coefficients and help “push” them towards 0. Two examples of these techniques are <strong>Ridge and Lasso regression</strong>. <strong>Ridge Regression</strong> - This is the method to choose when we don’t want to elimiate any variables, and just want to keep their coefficents low. For example, if we are trying to predict an animal’s lifespan based on water pollution. Two pollutants might be related to each other, but the environmental scientists might want to keep both pollutants in the model. This method helps to find that balance. <strong>Lasso Regression</strong> - This is called a variable selection technique, since can actually cause a variable’s coefficient to be 0, thus eliminating the variable from the model. It, like Ridge regression, includes a penalty that “pushes” the coefficients toward 0. It can aid in both reducing inflation in variables and selecting variables to use. Both of these techniques can be used to help us as we combine the information they provide with our understanding of the problem. Many coding languages even include functions or packages that will help you use these tools!</p>
+</section>
+<section id="cross-validation" class="level4">
+<h4 class="anchored" data-anchor-id="cross-validation">Cross Validation</h4>
+<p>Cross validation is an essential aspect to model building. The purpose of cross validation is to check and see how well your model can predict future data. This is essential as a data scientist and a key to ensure that our model is not overfit to our data i.e.&nbsp;unflexible. For cross validation you will select the model you want to use, I would honestly recommend selecting multiple potential models here. You will then randomly split your data up into a <em>training set</em> and a <em>test set</em>. The model(s) will then be fit to the training set and then tested to see how well they model the test set. If it doesn’t do a good job predicting the test set, it is possible that the model is overfitting to your data. You should randomly split up the data multiple times and perform this process to then see how the model fits overall. I believe cross validation should be done everytime a model is being trained.</p>
+<p>These two methods can even be combined and both used in the process of model selection and training. They will help us as data scientists to provide flexible yet accurate models to answer our questions and provide key insights to the problems presented to us. I implore you to check and ensure that your model is flexible and can handle the future data that will be given to it.</p>
 
 
 <!-- -->
 
+</section>
 </section>
 </section>
 
@@ -809,7 +816,7 @@ Two side-by-side plots comparing model fits. The left plot shows four black data
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "How to handle (model) sensitivity"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "How to fix (model) sensitivity problems"</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Matthew Wilon"</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2025-09-29"</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
@@ -817,89 +824,102 @@ Two side-by-side plots comparing model fits. The left plot shows four black data
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>words to know: *scalable, bayesian, prior*</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>When learning to build statistical models, the moment the model “fits” the data and your assumptions are met you tend to pat yourself on the back and call it a day. But in the *wild*, models need to be <span class="co">[</span><span class="ot">flexible</span><span class="co">](#flexibility)</span>. They need to fit not just the data present, but future data. We need to make predictions with this model. We will consider how model sensitivity relates to these flexibility.</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>When learning to build statisitcal models, the moment the model “fits” the data and your assumptions are met you tend to pat yourself on the back and call it a day. But in the *wild*, models need to be <span class="co">[</span><span class="ot">flexible</span><span class="co">](#flexibility)</span>. They need to be resistant to our <span class="co">[</span><span class="ot">prior beliefs</span><span class="co">](#Priors-Beliefs)</span> potentially bleeding into the model. We will consider how sensitivity relates to these 2 topics.</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Flexibility</span></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu"># Flexibility</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>Lets consider these two models. Both of them predict the data. Both of them accuratly model the data, but how well will they model another data point from the same sample? p.s. The code is provided in case you would like to experiment with this youself. </span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>Lets first consider these two models. Both of them predict the dataLets first consider these two models. Both of them accuratly model the data, but how well will they model another data point from the same sample? </span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="in">```{R, warning = FALSE}</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># This code was produced with the aid of Microsoft copilot</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(splines)</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Original data</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="fl">2.5</span>, <span class="fl">3.5</span>))</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Spline data</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>spline_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="at">length.out =</span> <span class="dv">100</span>))</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>spline_df<span class="sc">$</span>y <span class="ot">&lt;-</span> <span class="fu">predict</span>(<span class="fu">smooth.spline</span>(df<span class="sc">$</span>x, df<span class="sc">$</span>y, <span class="at">df =</span> <span class="dv">4</span>), spline_df<span class="sc">$</span>x)<span class="sc">$</span>y</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co"># First plot: original model fit</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> spline_df, <span class="fu">aes</span>(x, y), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Original Model Fit"</span>, <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>) <span class="sc">+</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Second plot: with new point</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>df_new_point <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="fl">3.2</span>)</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> df_new_point, <span class="fu">aes</span>(x, y), <span class="at">color =</span> <span class="st">"green"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> spline_df, <span class="fu">aes</span>(x, y), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Model Fit with New Point"</span>, <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>) <span class="sc">+</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Display side by side</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="in">```{R, warning = FALSE, eval = FALSE}</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># This code was produced with the aid of Microsoft copilot</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(splines)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Original data</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="fl">2.5</span>, <span class="fl">3.5</span>))</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Spline data</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>spline_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="at">length.out =</span> <span class="dv">100</span>))</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>spline_df<span class="sc">$</span>y <span class="ot">&lt;-</span> <span class="fu">predict</span>(<span class="fu">smooth.spline</span>(df<span class="sc">$</span>x, df<span class="sc">$</span>y, <span class="at">df =</span> <span class="dv">4</span>), spline_df<span class="sc">$</span>x)<span class="sc">$</span>y</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># First plot: original model fit</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> spline_df, <span class="fu">aes</span>(x, y), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Original Model Fit"</span>, <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>) <span class="sc">+</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Second plot: with new point</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>df_new_point <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="fl">3.2</span>)</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> df_new_point, <span class="fu">aes</span>(x, y), <span class="at">color =</span> <span class="st">"green"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> spline_df, <span class="fu">aes</span>(x, y), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Model Fit with New Point"</span>, <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>) <span class="sc">+</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Display side by side</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="al">![Two side-by-side plots comparing model fits. The left plot shows four black data points with a blue linear regression line and a red dashed overfitted curve passing through all points. On the right plot, the original lines remain unchanged. There are the same 4 black data points plus a new green data point. The green point has the same x value as another point, but a different y value. The point lies far from the overfitted curve, but close to the linear regression line.](model_fit_plot.jpeg "Comparing model fits")</span>  </span>
 <span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">details</span><span class="dt">&gt;</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">summary</span><span class="dt">&gt;</span>Click for alternate description<span class="dt">&lt;/</span><span class="kw">summary</span><span class="dt">&gt;</span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>  Two side-by-side plots comparing model fits. The left plot shows four black data points with a blue linear regression line and a red dashed overfitted curve passing through all points. On the right plot, the original lines remain unchanged. There are the same 4 black data points plus a new green data point. The green point has the same x value as another point, but a different y value. The point lies far from the overfitted curve, but close to the linear regression line.</span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">details</span><span class="dt">&gt;</span></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>Although the dotted line appeared to be an exceptional model for the data collected, it doesn't adequately model the whole population. Some model diagnostics will not catch overfitting, and might even tell you that it is an amazing model. In the above example the $\text{MSE} = 0$. Which would be amazing. The problem is that this model isn't flexible enough to accuratly predict future observations, nor to provide correct confidence intervals. It is *overfitted* to the data. We need a model that is more flexible to handle variance in the data.</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problems</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>Let's discuss a couple potential problems leading to overfitting.</span>
 <span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>Although the dotted line appeared to be an exceptional model for the data collected, it doesn't adequately model the whole population. Some model diagnostics will not catch overfitting, and might even tell you that it is an amazing model. In the above example the $\text{MSE} = 0$. Which would be amazing. The problem is that this model isn't flexible enough to accuratly predict future observations, nor to provide correct confidence intervals. We need a model that is more flexible to handle variance in the data.</span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problems</span></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>Let's discuss a couple potential problems leading to overfitting.</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span><span class="co">[</span><span class="ot">Too many predictors</span><span class="co">](#predictors)</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span><span class="co">[</span><span class="ot">Multicollinearity</span><span class="co">](#multicolliniarity)</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Predictors</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>  In a world saturated with data, sometimes **less is more**. Especially when it comes to the number of predictors we use. As data scientists, we're presensted with all the data collected. It is up to us to sift through the information available and to select the variables that are necessary to answer our questions. If we have to many predictor variables in our model we run the risk of finding significance that isn't there. For example, if we are testing significance with $\alpha \le 0.05$ and we test 20 insignificant variables. On average, one of those variables will appear to be statistically significant even though in reality it isn't. <span class="co">[</span><span class="ot">Here's</span><span class="co">](https://www.explainxkcd.com/wiki/index.php/882:_Significant)</span> a comic about that if you're interested. When we use to many variables we can create a model where the coefficients tied to our variables match the current data set well, but will not match future data. We can sometimes even "take" some of the relationship from one variable and "give" it to another if the two variables are related. This is related to multicollinearity. </span>
 <span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span><span class="co">[</span><span class="ot">Too many predictors</span><span class="co">](#predictors)</span></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span><span class="co">[</span><span class="ot">Multicollinearity</span><span class="co">](#multicolliniarity)</span></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span><span class="co">[</span><span class="ot">Sample size</span><span class="co">](#sample-size)</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Multicollinearity</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>One of my first realizations about multicollinearity is that I want to say this word as infrequently as possible. Luckily this is written and not a presentation. To understand multicollinearity, we must first understand that sometimes predictive variables can be related. For example, if I had a person intereted in contracting me to do data analytics for them and I wanted to determine how much I thought they'd be willing to pay me, I could consider both their income level and their house property value as predictors for the money they'd pay. The problem is that these two variables are often very related. Considering this mathematically, we see that the following equations are equivalent.</span>
 <span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Predictors</span></span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>  In a world saturated with data, sometimes **less is more**. Especially when it comes to the number of predictors we use. When I say predictors, I am talking about how many variables are used to predict our value of interest. As data scientists, we're presensted with all the data collected. It is up to us to sift through the information available and to select the variables that are necessary to answer our questions. If we have to many predictor variables in our model we run the risk of finding significance that isn't there. For example, if we are testing significance with $\alpha \le 0.05$ and we test 20 insignificant variables. On average, one of those variables will appear to be statistically significant even though in reality it isn't. <span class="co">[</span><span class="ot">Here's</span><span class="co">](https://www.explainxkcd.com/wiki/index.php/882:_Significant)</span> a comic about that if you're interested. When we use to many variables we can create a model where the coefficients tied to our variables match the current data set well, but will not match future data. We can sometimes even "take" some of the relationship from one variable and "give" it to another if the two variables are related. This is related to multicollinearity. </span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Multicollinearity</span></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>One of my first realizations about multicollinearity is that I want to saw this word as infrequently as possible. Luckily this is written and not a presentation. To understand multicollinearity, we must first understand that sometimes possible predictive variables are related. For example, if I had a person intereted in contracting me to do data analytics for them and I wanted to determine how much I thought they'd be willing to pay me, I could consider both their income level and their house property values as predictors for getting my service. The problem is that these two variables are often very related. Considersing this mathematically we see that the following equations are equivalent.</span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>I dont think this is right</span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>\begin{align}</span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>  \begin{split}</span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>  \text{Money Paid} &amp;\propto 2 \cdot \text{Income Level } - 1 \cdot \text{House Property Value} <span class="sc">\\</span></span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>  \text{Money Paid} &amp;\propto 40 \cdot \text{Income Level } - 20 \cdot \text{House Property Value} </span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>  \end{split}</span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>\end{align}</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>\begin{align}</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>  \begin{split}</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>  \text{Assume House} &amp;\text{Property Value} = 3*\text{Income } <span class="sc">\\</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>  \text{Money Paid}_1 &amp;= (\text{Property Value} - \text{Income})/1000 <span class="sc">\\</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>  \text{Money Paid}_2 &amp;= (4 \cdot \text{Property Value} - 10 \cdot \text{Income})/1000 <span class="sc">\\</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>  \text{Let Property Value} &amp;= 300000 \text{, Income} = 100000<span class="sc">\\</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>  \text{Money Paid}_1 &amp;= (300000 - 100000)/1000 = 200 <span class="sc">\\</span></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>  \text{Money Paid}_2 &amp;= (4 \cdot 300000 - 10 \cdot 100000)/1000 = 200 <span class="sc">\\</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>  \end{split}</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>\end{align}</span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>We can see that, these 2 equations will produce the same results for a prediction of how much money a person will be willing to pay. This is due to a preexisting relationship between income level and house property value. So in this case, if your model were either of these is would produce the right value. The problem is that one of these equations will produce much different values if there is a slight change in Income or Property value. Since in the "wild" this relationship would often be a correlation and not an exact 3-1 relationship. This means that when making predictions for new data points, or in other words a new customer, your predictions could change rapidly despite small differences between them and an existing customer used to train the model. These 2 variables represent multicollinearity. In situations like these, it is generally better to only use one of your variables to include in the model.</span>
 <span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Sample Size</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="fu">### Potential Fixes</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>It is clear that these issues can be probematic. Today we will discuss two tools that can be used to help mitigate the chance of these problems. It is important to note that although these tools help, it is important to combine them with critical thinking and a personal understanding of your data set and modeling goals. These methods will help you to select potential models to use and to compare different potential models. I will give you enough information about these techniques to get started and to understand their potential. They are honestly interesting enough to have their own blog posts, so I will just focus on gerneal understanding here.</span>
 <span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="fu">### Potential Fix</span></span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span><span class="co">[</span><span class="ot">Regularization Methods</span><span class="co">](#regularization-methods)</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span><span class="co">[</span><span class="ot">Cross Validation</span><span class="co">](#cross-validation)</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Regularization Methods</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>Regularization methods help us to shrink our coefficents to avoid inflated coefficients that increase the variablility induced by slight changes in the data. This can avoid the issue demonstrated in the <span class="co">[</span><span class="ot">multicollinearity</span><span class="co">](#multicollinearity)</span> example. These methods penalize large coefficients and help "push" them towards 0. Two examples of these techniques are **Ridge and Lasso regression**.</span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>**Ridge Regression** - This is the method to choose when we don't want to elimiate any variables, and just want to keep their coefficents low. For example, if we are trying to predict an animal's lifespan based on water pollution. Two pollutants might be related to each other, but the environmental scientists might want to keep both pollutants in the model. This method helps to find that balance.</span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>**Lasso Regression** - This is called a variable selection technique, since can actually cause a variable's coefficient to be 0, thus eliminating the variable from the model. It, like Ridge regression, includes a penalty that "pushes" the coefficients toward 0. It can aid in both reducing inflation in variables and selecting variables to use.</span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>Both of these techniques can be used to help us as we combine the information they provide with our understanding of the problem. Many coding languages even include functions or packages that will help you use these tools!</span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Cross Validation</span></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>Cross validation is an essential aspect to model building. The purpose of cross validation is to check and see how well your model can predict future data. This is essential as a data scientist and a key to ensure that our model is not overfit to our data i.e. unflexible. For cross validation you will select the model you want to use, I would honestly recommend selecting multiple potential models here. You will then randomly split your data up into a *training set* and a *test set*. The model(s) will then be fit to the training set and then tested to see how well they model the test set. If it doesn't do a good job predicting the test set, it is possible that the model is overfitting to your data. You should randomly split up the data multiple times and perform this process to then see how the model fits overall. I believe cross validation should be done everytime a model is being trained. </span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>These two methods can even be combined and both used in the process of model selection and training. They will help us as data scientists to provide flexible yet accurate models to answer our questions and provide key insights to the problems presented to us. I implore you to check and ensure that your model is flexible and can handle the future data that will be given to it.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
