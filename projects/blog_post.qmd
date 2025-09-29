@@ -93,7 +93,9 @@ It is clear that these issues can be probematic. Today we will discuss two tools
 #### Regularization Methods
 
 Regularization methods help us to shrink our coefficents to avoid inflated coefficients that increase the variablility induced by slight changes in the data. This can avoid the issue demonstrated in the [multicollinearity](#multicollinearity) example. These methods penalize large coefficients and help "push" them towards 0. Two examples of these techniques are **Ridge and Lasso regression**.
+
 **Ridge Regression** - This is the method to choose when we don't want to elimiate any variables, and just want to keep their coefficents low. For example, if we are trying to predict an animal's lifespan based on water pollution. Two pollutants might be related to each other, but the environmental scientists might want to keep both pollutants in the model. This method helps to find that balance.
+
 **Lasso Regression** - This is called a variable selection technique, since can actually cause a variable's coefficient to be 0, thus eliminating the variable from the model. It, like Ridge regression, includes a penalty that "pushes" the coefficients toward 0. It can aid in both reducing inflation in variables and selecting variables to use.
 Both of these techniques can be used to help us as we combine the information they provide with our understanding of the problem. Many coding languages even include functions or packages that will help you use these tools!
 
@@ -101,5 +103,5 @@ Both of these techniques can be used to help us as we combine the information th
 
 Cross validation is an essential aspect to model building. The purpose of cross validation is to check and see how well your model can predict future data. This is essential as a data scientist and a key to ensure that our model is not overfit to our data i.e. unflexible. For cross validation you will select the model you want to use, I would honestly recommend selecting multiple potential models here. You will then randomly split your data up into a *training set* and a *test set*. The model(s) will then be fit to the training set and then tested to see how well they model the test set. If it doesn't do a good job predicting the test set, it is possible that the model is overfitting to your data. You should randomly split up the data multiple times and perform this process to then see how the model fits overall. I believe cross validation should be done everytime a model is being trained. 
 
-
+## Conclusion
 These two methods can even be combined and both used in the process of model selection and training. They will help us as data scientists to provide flexible yet accurate models to answer our questions and provide key insights to the problems presented to us. I implore you to check and ensure that your model is flexible and can handle the future data that will be given to it.
