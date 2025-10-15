@@ -13,7 +13,7 @@ I'm from Texas and am studying statistics with a minor in mathematics at Brigham
 Probability and Inference, Statistical Modeling, Bayesian Reliability, Spanish
 
 ## Skills & Interests
-Linear Regression, Model Training, Prediction, Longitudinal Data, Model Evaluation
+Linear Regression, Model Training, Prediction, Longitudinal Data, Model Evaluation, Bayesian Clustering
 
 ### Technical Skills
 - **Programming**: Python, SQL, R, Excel
