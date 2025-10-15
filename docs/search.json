@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "Welcome to My Data Science Portfolio",
     "section": "",
-    "text": "Welcome to my data science portfolio! This site shows my journey learning data science and analytics. Here you’ll find projects that demonstrate what I’ve learned and discovered.\n\n\nThis portfolio shows my work learning data science. Each project includes:\n\nMy code with documentation\nVisualizations I created\nWhat I learned and discovered\n\nI built this site using Quarto and host it on GitHub Pages.\n\n\n\n\nProgramming: Python, Pandas for data analysis\nVisualization: Creating charts with Matplotlib and Seaborn\nData Collection: Getting data from files, websites, and APIs\nAnalysis: Finding patterns and answering questions with data\n\n\n\n\n\n\n\nDescription: A blog post about accounting for model sensitivity\n\n\n\nLearn how I explore datasets to find interesting patterns and answer questions.\n\n\n\nSee how I gather data from different sources and prepare it for analysis.\n\n\n\nSee how I tackle a data science project beginning to end.\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
+    "text": "Welcome to my data science portfolio! This site shows my journey learning data science and analytics. On this website you will find past data projects that focus on statistical skills in R, and current project that focs on Data Science skills in Python. I hope you find something that interests you and reach out to chat about my work!\n\n\nThis portfolio shows my work learning data science. My goal is to help you to understand the skills I would offer as an employee. Each project includes:\n\nMy code with documentation\nVisualizations I created\nWhat I learned and discovered\n\nI built this site using Quarto and host it on GitHub Pages.\n\n\n\n\nProgramming: Python, Pandas for data analysis\nVisualization: Creating charts with Matplotlib and Seaborn\nData Collection: Getting data from files, websites, and APIs\nAnalysis: Finding patterns and answering questions with data\n\n\n\n\n\n\n\nA blog post about accounting for model sensitivity\n\n\n\nLearn how I explore datasets to find interesting patterns and answer questions.\n\n\n\nSee how I gather data from different sources and prepare it for analysis.\n\n\n\nSee how I tackle a data science project beginning to end.\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
   },
   {
     "objectID": "index.html#about-this-portfolio",
     "href": "index.html#about-this-portfolio",
     "title": "Welcome to My Data Science Portfolio",
     "section": "",
-    "text": "This portfolio shows my work learning data science. Each project includes:\n\nMy code with documentation\nVisualizations I created\nWhat I learned and discovered\n\nI built this site using Quarto and host it on GitHub Pages."
+    "text": "This portfolio shows my work learning data science. My goal is to help you to understand the skills I would offer as an employee. Each project includes:\n\nMy code with documentation\nVisualizations I created\nWhat I learned and discovered\n\nI built this site using Quarto and host it on GitHub Pages."
   },
   {
     "objectID": "index.html#skills-im-learning",
@@ -25,7 +25,7 @@
     "href": "index.html#my-projects",
     "title": "Welcome to My Data Science Portfolio",
     "section": "",
-    "text": "Description: A blog post about accounting for model sensitivity\n\n\n\nLearn how I explore datasets to find interesting patterns and answer questions.\n\n\n\nSee how I gather data from different sources and prepare it for analysis.\n\n\n\nSee how I tackle a data science project beginning to end.\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
+    "text": "A blog post about accounting for model sensitivity\n\n\n\nLearn how I explore datasets to find interesting patterns and answer questions.\n\n\n\nSee how I gather data from different sources and prepare it for analysis.\n\n\n\nSee how I tackle a data science project beginning to end.\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
   },
   {
     "objectID": "projects/index.html",
@@ -62,7 +62,7 @@
     "href": "about.html",
     "title": "About Me",
     "section": "",
-    "text": "I’m from Texas and am studying statistics with a minor in mathematics at Brigham Young University. I have co-authored an academic paper in math, and I am currently working on another paper in the field of statistics. Some projects I’ve worked on include metal fatigue analysis, and vaccine trends based on political affiliation. I want to continue to develop models and statistical processes for complex problems. I would love to chat about your favorite data science projects!"
+    "text": "A picture of me smiling at the beach"
   },
   {
     "objectID": "about.html#background",
@@ -76,7 +76,7 @@
     "href": "about.html#education",
     "title": "About Me",
     "section": "Education",
-    "text": "Education\n\nBS Statistics, Minor Mathematics - Brigham Young University, 2027\nRelevant Coursework: Data Science Process, Machine Learning, Applied Programming, Linear Regression, Probability and Inference, Statistical Modeling, Bayesian Reliability, Spanish"
+    "text": "Education\n\nBS Statistics, Minor Mathematics - Brigham Young University, Apr 2027\nRelevant Coursework: Data Science Process, Machine Learning, Applied Programming, Linear Regression, Probability and Inference, Statistical Modeling, Bayesian Reliability, Spanish"
   },
   {
     "objectID": "about.html#skills-interests",
@@ -130,8 +130,8 @@
     "objectID": "about.html#tldr",
     "href": "about.html#tldr",
     "title": "About Me",
-    "section": "",
-    "text": "I’m from Texas and am studying statistics with a minor in mathematics at Brigham Young University. I have co-authored an academic paper in math, and I am currently working on another paper in the field of statistics. Some projects I’ve worked on include metal fatigue analysis, and vaccine trends based on political affiliation. I want to continue to develop models and statistical processes for complex problems. I would love to chat about your favorite data science projects!"
+    "section": "TLDR",
+    "text": "TLDR\nI’m from Texas and am studying statistics with a minor in mathematics at Brigham Young University. I have co-authored an academic paper in math, and I am currently working on another paper in the field of statistics. Some projects I’ve worked on include metal fatigue analysis, and vaccine trends based on political affiliation. I want to continue to develop models and statistical processes for complex problems. I would love to chat about your favorite data science projects!"
   },
   {
     "objectID": "blog_post.html",
@@ -174,5 +174,19 @@
     "title": "How to fix (model) sensitivity problems",
     "section": "Conclusion",
     "text": "Conclusion\nThese two methods can even be combined and both used in the process of model selection and training. They will help us as data scientists to provide flexible yet accurate models to answer our questions and provide key insights to the problems presented to us. I implore you to check and ensure that your model is flexible and can handle the future data that will be given to it."
+  },
+  {
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "About Me",
+    "section": "Experience",
+    "text": "Experience\n\nPast Projects\n\nMetal Fatigue Model (Bayesian Linear Regression, Prediction)\n\nPredicted metal breakage with 95% accuracy using a linear model\n\nPresented findings via presentation, executive summary, and report\n\nPerformed diagnostics and analysis to determine optimal model\n\nDesigned and implemented a 3-variable experiment to detect fatigue factors Click for repo\n\n\n\nStatistically Driven Best Spending Practices (Excel, ANOVA)\n\nReduced spending by 250% using multivariable statistical techniques\n\nIncreased study dependability by 200%+ through R-based procedures\n\nAuthored report and presented findings to peers to improve financial practices\n\n\n\n\nWork Experience\n\nTaxHawk Inc. — Product Development Specialist Intern\nProvo, UT\n- Reduced customer filing time by up to 8% by eliminating system redundancies\n- Completed pre-season product changes ahead of team; covered absent coworker’s tasks\n- Translated Rhode Island tax forms into pseudo-code for web developers\n\n\nBrigham Young University — Department of Statistics\nResearch Assistant\nProvo, UT\n- Coded algorithms for data analysis and visualizations of 3-level models\n- Halved code run time by optimizing languages and libraries\n- Consolidated codebase by 50% while maintaining scalability and flexibility\n\n\nBrigham Young University — Department of Mathematics\nResearch Assistant\nProvo, UT\n- Received top marks for work ethic and team contributions\n- Created weekly visualizations to enhance group understanding\n- Explored data and collaborated in small teams to meet weekly goals"
+  },
+  {
+    "objectID": "about.html#who-am-i",
+    "href": "about.html#who-am-i",
+    "title": "About Me",
+    "section": "Who am I?",
+    "text": "Who am I?\nWhen I am not doing statistics or data science, I have a few hobbies that I enjoy. I play basketball regularly and play on an intramural team almost every semester. My wife and I love to dance together, so we will take dance classes at BYU, and will also go to social dance clubs in the area. When unwinding through a less physical activity, I enjoy watching sports and reading books."
   }
 ]

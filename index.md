@@ -4,11 +4,11 @@ title: "Welcome to My Data Science Portfolio"
 
 # Hello! I'm Matthew Wilson 👋
 
-Welcome to my data science portfolio! This site shows my journey learning data science and analytics. Here you'll find projects that demonstrate what I've learned and discovered.
+Welcome to my data science portfolio! This site shows my journey learning data science and analytics. On this website you will find past data projects that focus on statistical skills in R, and current project that focs on Data Science skills in Python. I hope you find something that interests you and reach out to chat about my work!
 
 ## 🎓 About This Portfolio
 
-This portfolio shows my work learning data science. Each project includes:
+This portfolio shows my work learning data science. My goal is to help you to understand the skills I would offer as an employee. Each project includes:
 
 - My code with documentation
 - Visualizations I created
