@@ -286,23 +286,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
-<p>I find it very important to understand how the circumstances of someone’s life impacts their health. I am in a human development class where we are learning about how the factors of our lives impact us, both the factors we can and can’t control. In this dataset I have the chance to study how a person’s race and sex, which they can’t control, and a person’s educational status, which they can somewhat control, change how likely they were to be killed by covid. Or to see if it in fact has no impact.</p>
+<p>I find it very important to understand how the circumstances of someone’s life impacts their health. I am in a human development class where we are learning about how the factors of our lives impact us. Both the factors we can and can’t control. In this dataset, I have the chance to study how a person’s race and sex (things they can’t control) and a person’s educational status (something partially controllable) change how likely they were to be killed by covid. Or to see if it in fact has no impact.</p>
 </section>
 <section id="motivating-question" class="level2">
 <h2 class="anchored" data-anchor-id="motivating-question">Motivating question</h2>
-<p>What impact do race, sex, education, and iteractions between the factors have on a person’s chance of dying during the covid epidemic? Are any groups impacted by covid more than others in terms of a change in the proportion of deaths?</p>
+<p>What impact do race, sex, education, and iteractions between the factors have on a person’s chance of dying during the covid epidemic? Are any groups impacted by covid more than others in terms of a change in the proportion of deaths amoung younger people?</p>
 </section>
 <section id="how-i-know-its-ethical" class="level2">
 <h2 class="anchored" data-anchor-id="how-i-know-its-ethical">How I know it’s ethical</h2>
-<p>I knew it was ethical through two processes. First, the data was taken from a government website that states that its purpose is to provide the public with data. The website also provided an API that would allow me to scrape the data. Second, I checked the robots.txt and determined the rules and regulations that were placed on scraping and followed them.</p>
+<p>I knew it was ethical through two processes. First, the data was taken from a government website that states that its purpose is to provide the public with data. The website also provided an API that would allow me to more easily scrape the data. Second, I checked the robots.txt and determined the rules and regulations that were placed on scraping and followed them.</p>
 <section id="how-i-gathered-and-prepared-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="how-i-gathered-and-prepared-the-data">How I gathered and prepared the data</h3>
-<p>First, I found the webpage that contained the data I wanted and obtained an api that I used to scrape data onto my computer as a json file using the library “requests”. Then, I used the pandas library to convert the file into a dataframe. After that, I cleaned my data using regex to condense and clarify values, I dropped rows with unknown values, and I converted certain columns into numeric values so I could do arithmetic with them. After cleaning the data, I made a new dataset that I can use. This was done by condensing the dataset so that it contained the deaths for both 2019 and 2020 in the same row. I also determined the proportion of deaths (both total and covid) that occured for each age group while grouping by the demographic information. Finally, I also compared how the proportion of total deaths per age group in 2019 compared to the proportion of covid deaths per age group in 2020. This way, my 2019 data acts as a control when I analyze covid deaths.</p>
+<p>First, I found the webpage that contained the data I wanted and obtained an api that I used to scrape data onto my computer as a json file using the library “requests”. Then, I used the pandas library to convert the file into a dataframe. After that, I cleaned my data using regex to condense and clarify cell values. I dropped rows with unknown values, and I converted certain columns into numeric values so I could do math with them. After cleaning the data, I made a new dataset that I can use. This was done by condensing the dataset so that it contained the deaths for both 2019 and 2020 in the same row. I also determined the proportion of deaths (both total deaths and covid deaths) that occured for each age level while grouping by the demographic information. This was done by finding the total deaths per demographic subgroup and how many deaths occured for each age level. Finally, I also compared how the proportion of total deaths per age group in 2019 compared to the proportion of covid deaths per age group in 2020. This way, my 2019 proportional deaths data acts as a control when I analyze covid deaths.</p>
 </section>
 <section id="eda-highlights" class="level3">
 <h3 class="anchored" data-anchor-id="eda-highlights">EDA highlights:</h3>
-<section id="some-basic-summary-statitics-for-my-numeric-values." class="level4">
-<h4 class="anchored" data-anchor-id="some-basic-summary-statitics-for-my-numeric-values.">Some basic summary statitics for my numeric values.</h4>
+<section id="some-basic-summary-statitics-for-some-numeric-values." class="level4">
+<h4 class="anchored" data-anchor-id="some-basic-summary-statitics-for-some-numeric-values.">Some basic summary statitics for some numeric values.</h4>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 8%">
@@ -380,8 +380,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="a-look-at-the-average-proportional-change-for-each-age-level-for-both-education-level-and-race." class="level4">
-<h4 class="anchored" data-anchor-id="a-look-at-the-average-proportional-change-for-each-age-level-for-both-education-level-and-race.">A look at the average proportional change for each age level for both education level and race.</h4>
+<section id="a-look-at-the-average-proportional-change-for-each-age-level-grouping-on-education-level-and-race." class="level4">
+<h4 class="anchored" data-anchor-id="a-look-at-the-average-proportional-change-for-each-age-level-grouping-on-education-level-and-race.">A look at the average proportional change for each age level grouping on education level and race.</h4>
+</section>
+<section id="race" class="level4">
+<h4 class="anchored" data-anchor-id="race">Race</h4>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -430,6 +433,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+</section>
+<section id="education" class="level4">
+<h4 class="anchored" data-anchor-id="education">Education</h4>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 47%">
@@ -470,19 +476,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="a-deeper-dive-into-the-different-proportional-changes." class="level4">
 <h4 class="anchored" data-anchor-id="a-deeper-dive-into-the-different-proportional-changes.">A deeper dive into the different proportional changes.</h4>
 </section>
-<section id="education" class="level4">
-<h4 class="anchored" data-anchor-id="education">Education</h4>
+<section id="education-1" class="level4">
+<h4 class="anchored" data-anchor-id="education-1">Education</h4>
 <p><img src="edu_prop_boxplot.png" title="Boxplots of proportional changes in death rates by eduction" class="img-fluid"></p>
 </section>
-<section id="race" class="level4">
-<h4 class="anchored" data-anchor-id="race">Race</h4>
+<section id="race-1" class="level4">
+<h4 class="anchored" data-anchor-id="race-1">Race</h4>
 <p><img src="race_prop_boxplot.png" title="Boxplots of proportional changes in death rates by race" class="img-fluid"></p>
 </section>
 </section>
 </section>
 <section id="what-are-the-most-interesting-findings-of-your-eda" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-the-most-interesting-findings-of-your-eda">What are the most interesting findings of your EDA?</h2>
-<p>What’s most interesting to me is the lack of a clear difference in change in proportion of deaths for different education levels. I would have thought that those with less education were more susceptible to deaths from covid. Due to them having greater need to go work (less savings), and also jobs that are less likely to permit remote work. Both of these would have increased exposure to covid.</p>
+<p>What’s most interesting to me is the lack of a clear difference in changes to proportion of deaths for different education levels. I thought that those with less education would be more susceptible to deaths from covid. Due to them having greater need to go work (less savings), and also jobs that are less likely to permit remote work. Both of these would have increased exposure to covid and in theory would have also increased deaths.</p>
 </section>
 <section id="links-to-find-further-information" class="level2">
 <h2 class="anchored" data-anchor-id="links-to-find-further-information">Links to find further information</h2>
@@ -958,67 +964,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">### Introduction</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>I find it very important to understand how the circumstances of someone's life impacts their health. I am in a human development class where we are learning about how the factors of our lives impact us, both the factors we can and can't control. In this dataset I have the chance to study how a person's race and sex, which they can't control, and a person's educational status, which they can somewhat control, change how likely they were to be killed by covid. Or to see if it in fact has no impact.</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>I find it very important to understand how the circumstances of someone's life impacts their health. I am in a human development class where we are learning about how the factors of our lives impact us. Both the factors we can and can't control. In this dataset, I have the chance to study how a person's race and sex (things they can't control) and a person's educational status (something partially controllable) change how likely they were to be killed by covid. Or to see if it in fact has no impact.</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Motivating question</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>What impact do race, sex, education, and iteractions between the factors have on a person's chance of dying during the covid epidemic? Are any groups impacted by covid more than others in terms of a change in the proportion of deaths?</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>What impact do race, sex, education, and iteractions between the factors have on a person's chance of dying during the covid epidemic? Are any groups impacted by covid more than others in terms of a change in the proportion of deaths amoung younger people?</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## How I know it's ethical</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>I knew it was ethical through two processes. First, the data was taken from a government website that states that its purpose is to provide the public with data. The website also provided an API that would allow me to scrape the data. Second, I checked the robots.txt and determined the rules and regulations that were placed on scraping and followed them.</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>I knew it was ethical through two processes. First, the data was taken from a government website that states that its purpose is to provide the public with data. The website also provided an API that would allow me to more easily scrape the data. Second, I checked the robots.txt and determined the rules and regulations that were placed on scraping and followed them.</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">### How I gathered and prepared the data</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>First, I found the webpage that contained the data I wanted and obtained an api that I used to scrape data onto my computer as a json file using the library "requests". Then, I used the pandas library to convert the file into a dataframe. After that, I cleaned my data using regex to condense and clarify values, I dropped rows with unknown values, and I converted certain columns into numeric values so I could do arithmetic with them.</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>After cleaning the data, I made a new dataset that I can use. This was done by condensing the dataset so that it contained the deaths for both 2019 and 2020 in the same row. I also determined the proportion of deaths (both total and covid) that occured for each age group while grouping by the demographic information. Finally, I also compared how the proportion of total deaths per age group in 2019 compared to the proportion of covid deaths per age group in 2020. This way, my 2019 data acts as a control when I analyze covid deaths.</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">### EDA highlights:</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Some basic summary statitics for my numeric values.</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>       <span class="pp">|</span>   covid_19_deaths <span class="pp">|</span>   prop_dead_covid <span class="pp">|</span>   prop_dead_2019 <span class="pp">|</span>   prop_change <span class="pp">|</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="pp">|:------|------------------:|------------------:|-----------------:|--------------:|</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> count <span class="pp">|</span>            214    <span class="pp">|</span>       214         <span class="pp">|</span>     214          <span class="pp">|</span> 214           <span class="pp">|</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> mean  <span class="pp">|</span>           1743.07 <span class="pp">|</span>         0.168224  <span class="pp">|</span>       0.168224   <span class="pp">|</span>  -1.94548e-19 <span class="pp">|</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> std   <span class="pp">|</span>           5754.05 <span class="pp">|</span>         0.172858  <span class="pp">|</span>       0.146603   <span class="pp">|</span>   0.0504982   <span class="pp">|</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> min   <span class="pp">|</span>              0    <span class="pp">|</span>         0         <span class="pp">|</span>       0.00117369 <span class="pp">|</span>  -0.178868    <span class="pp">|</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 25%   <span class="pp">|</span>             33.5  <span class="pp">|</span>         0.0224849 <span class="pp">|</span>       0.0605526  <span class="pp">|</span>  -0.0295447   <span class="pp">|</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 50%   <span class="pp">|</span>            160    <span class="pp">|</span>         0.123526  <span class="pp">|</span>       0.137681   <span class="pp">|</span>  -0.0104656   <span class="pp">|</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 75%   <span class="pp">|</span>            907    <span class="pp">|</span>         0.253918  <span class="pp">|</span>       0.21127    <span class="pp">|</span>   0.0295659   <span class="pp">|</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> max   <span class="pp">|</span>          59483    <span class="pp">|</span>         0.791629  <span class="pp">|</span>       0.72443    <span class="pp">|</span>   0.190199    <span class="pp">|</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu">#### A look at the average proportional change for each age level for both education level and race.</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> race_or_hispanic_origin   <span class="pp">|</span>        0-24 <span class="pp">|</span>      25-39 <span class="pp">|</span>       40-54 <span class="pp">|</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="pp">|:--------------------------|------------:|-----------:|------------:|</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Am. Indian                <span class="pp">|</span> -0.0366441  <span class="pp">|</span> -0.037238  <span class="pp">|</span> -0.0118309  <span class="pp">|</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Asian                     <span class="pp">|</span> -0.0194403  <span class="pp">|</span> -0.0174561 <span class="pp">|</span> -0.0145093  <span class="pp">|</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Black                     <span class="pp">|</span> -0.0236276  <span class="pp">|</span> -0.0333654 <span class="pp">|</span> -0.0187769  <span class="pp">|</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Hispanic                  <span class="pp">|</span> -0.0316175  <span class="pp">|</span> -0.0369599 <span class="pp">|</span>  0.00701345 <span class="pp">|</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Multiracial               <span class="pp">|</span> -0.0683769  <span class="pp">|</span> -0.0645841 <span class="pp">|</span> -0.0378952  <span class="pp">|</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> White                     <span class="pp">|</span> -0.00802079 <span class="pp">|</span> -0.0211336 <span class="pp">|</span> -0.0321271  <span class="pp">|</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">### How I gathered and prepared the data</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>First, I found the webpage that contained the data I wanted and obtained an api that I used to scrape data onto my computer as a json file using the library "requests". Then, I used the pandas library to convert the file into a dataframe. After that, I cleaned my data using regex to condense and clarify cell values. I dropped rows with unknown values, and I converted certain columns into numeric values so I could do math with them.</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>After cleaning the data, I made a new dataset that I can use. This was done by condensing the dataset so that it contained the deaths for both 2019 and 2020 in the same row. I also determined the proportion of deaths (both total deaths and covid deaths) that occured for each age level while grouping by the demographic information. This was done by finding the total deaths per demographic subgroup and how many deaths occured for each age level. Finally, I also compared how the proportion of total deaths per age group in 2019 compared to the proportion of covid deaths per age group in 2020. This way, my 2019 proportional deaths data acts as a control when I analyze covid deaths.</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">### EDA highlights:</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Some basic summary statitics for some numeric values.</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>       <span class="pp">|</span>   covid_19_deaths <span class="pp">|</span>   prop_dead_covid <span class="pp">|</span>   prop_dead_2019 <span class="pp">|</span>   prop_change <span class="pp">|</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="pp">|:------|------------------:|------------------:|-----------------:|--------------:|</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> count <span class="pp">|</span>            214    <span class="pp">|</span>       214         <span class="pp">|</span>     214          <span class="pp">|</span> 214           <span class="pp">|</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> mean  <span class="pp">|</span>           1743.07 <span class="pp">|</span>         0.168224  <span class="pp">|</span>       0.168224   <span class="pp">|</span>  -1.94548e-19 <span class="pp">|</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> std   <span class="pp">|</span>           5754.05 <span class="pp">|</span>         0.172858  <span class="pp">|</span>       0.146603   <span class="pp">|</span>   0.0504982   <span class="pp">|</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> min   <span class="pp">|</span>              0    <span class="pp">|</span>         0         <span class="pp">|</span>       0.00117369 <span class="pp">|</span>  -0.178868    <span class="pp">|</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 25%   <span class="pp">|</span>             33.5  <span class="pp">|</span>         0.0224849 <span class="pp">|</span>       0.0605526  <span class="pp">|</span>  -0.0295447   <span class="pp">|</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 50%   <span class="pp">|</span>            160    <span class="pp">|</span>         0.123526  <span class="pp">|</span>       0.137681   <span class="pp">|</span>  -0.0104656   <span class="pp">|</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 75%   <span class="pp">|</span>            907    <span class="pp">|</span>         0.253918  <span class="pp">|</span>       0.21127    <span class="pp">|</span>   0.0295659   <span class="pp">|</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> max   <span class="pp">|</span>          59483    <span class="pp">|</span>         0.791629  <span class="pp">|</span>       0.72443    <span class="pp">|</span>   0.190199    <span class="pp">|</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="fu">#### A look at the average proportional change for each age level grouping on education level and race.</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Race</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> race_or_hispanic_origin   <span class="pp">|</span>        0-24 <span class="pp">|</span>      25-39 <span class="pp">|</span>       40-54 <span class="pp">|</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="pp">|:--------------------------|------------:|-----------:|------------:|</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Am. Indian                <span class="pp">|</span> -0.0366441  <span class="pp">|</span> -0.037238  <span class="pp">|</span> -0.0118309  <span class="pp">|</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Asian                     <span class="pp">|</span> -0.0194403  <span class="pp">|</span> -0.0174561 <span class="pp">|</span> -0.0145093  <span class="pp">|</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Black                     <span class="pp">|</span> -0.0236276  <span class="pp">|</span> -0.0333654 <span class="pp">|</span> -0.0187769  <span class="pp">|</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Hispanic                  <span class="pp">|</span> -0.0316175  <span class="pp">|</span> -0.0369599 <span class="pp">|</span>  0.00701345 <span class="pp">|</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Multiracial               <span class="pp">|</span> -0.0683769  <span class="pp">|</span> -0.0645841 <span class="pp">|</span> -0.0378952  <span class="pp">|</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> White                     <span class="pp">|</span> -0.00802079 <span class="pp">|</span> -0.0211336 <span class="pp">|</span> -0.0321271  <span class="pp">|</span></span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> education_level                  <span class="pp">|</span>        0-24 <span class="pp">|</span>      25-39 <span class="pp">|</span>      40-54 <span class="pp">|</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="pp">|:---------------------------------|------------:|-----------:|-----------:|</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Associate degree or some college <span class="pp">|</span> -0.0202627  <span class="pp">|</span> -0.0447806 <span class="pp">|</span> -0.0151646 <span class="pp">|</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Bachelor's degree or more        <span class="pp">|</span> -0.00436995 <span class="pp">|</span> -0.025146  <span class="pp">|</span> -0.019309  <span class="pp">|</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> High school graduate/GED or less <span class="pp">|</span> -0.063852   <span class="pp">|</span> -0.0354419 <span class="pp">|</span> -0.0195895 <span class="pp">|</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="fu">#### A deeper dive into the different proportional changes.</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Education</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="al">![](edu_prop_boxplot.png "Boxplots of proportional changes in death rates by eduction")</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Race</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="al">![](race_prop_boxplot.png "Boxplots of proportional changes in death rates by race")</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="fu">## What are the most interesting findings of your EDA?</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Education</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> education_level                  <span class="pp">|</span>        0-24 <span class="pp">|</span>      25-39 <span class="pp">|</span>      40-54 <span class="pp">|</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="pp">|:---------------------------------|------------:|-----------:|-----------:|</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Associate degree or some college <span class="pp">|</span> -0.0202627  <span class="pp">|</span> -0.0447806 <span class="pp">|</span> -0.0151646 <span class="pp">|</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Bachelor's degree or more        <span class="pp">|</span> -0.00436995 <span class="pp">|</span> -0.025146  <span class="pp">|</span> -0.019309  <span class="pp">|</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> High school graduate/GED or less <span class="pp">|</span> -0.063852   <span class="pp">|</span> -0.0354419 <span class="pp">|</span> -0.0195895 <span class="pp">|</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="fu">#### A deeper dive into the different proportional changes.</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Education</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="al">![](edu_prop_boxplot.png "Boxplots of proportional changes in death rates by eduction")</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Race</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="al">![](race_prop_boxplot.png "Boxplots of proportional changes in death rates by race")</span></span>
 <span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>What's most interesting to me is the lack of a clear difference in change in proportion of deaths for different education levels. I would have thought that those with less education were more susceptible to deaths from covid. Due to them having greater need to go work (less savings), and also jobs that are less likely to permit remote work. Both of these would have increased exposure to covid.</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="fu">## What are the most interesting findings of your EDA?</span></span>
 <span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="fu">## Links to find further information</span></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">About the data</span><span class="co">](https://data.cdc.gov/National-Center-for-Health-Statistics/AH-Deaths-by-Educational-Attainment-2019-2020/4ueh-89p9/about_data)</span></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">My repo for the process</span><span class="co">](https://github.com/Acodea23/eda_blog)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>What's most interesting to me is the lack of a clear difference in changes to proportion of deaths for different education levels. I thought that those with less education would be more susceptible to deaths from covid. Due to them having greater need to go work (less savings), and also jobs that are less likely to permit remote work. Both of these would have increased exposure to covid and in theory would have also increased deaths.</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="fu">## Links to find further information</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">About the data</span><span class="co">](https://data.cdc.gov/National-Center-for-Health-Statistics/AH-Deaths-by-Educational-Attainment-2019-2020/4ueh-89p9/about_data)</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">My repo for the process</span><span class="co">](https://github.com/Acodea23/eda_blog)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

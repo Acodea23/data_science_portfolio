@@ -10,22 +10,21 @@ format:
 
 ### Introduction
 
-I find it very important to understand how the circumstances of someone's life impacts their health. I am in a human development class where we are learning about how the factors of our lives impact us, both the factors we can and can't control. In this dataset I have the chance to study how a person's race and sex, which they can't control, and a person's educational status, which they can somewhat control, change how likely they were to be killed by covid. Or to see if it in fact has no impact.
+I find it very important to understand how the circumstances of someone's life impacts their health. I am in a human development class where we are learning about how the factors of our lives impact us. Both the factors we can and can't control. In this dataset, I have the chance to study how a person's race and sex (things they can't control) and a person's educational status (something partially controllable) change how likely they were to be killed by covid. Or to see if it in fact has no impact.
 
 ## Motivating question
-What impact do race, sex, education, and iteractions between the factors have on a person's chance of dying during the covid epidemic? Are any groups impacted by covid more than others in terms of a change in the proportion of deaths?
+What impact do race, sex, education, and iteractions between the factors have on a person's chance of dying during the covid epidemic? Are any groups impacted by covid more than others in terms of a change in the proportion of deaths amoung younger people?
 
 ## How I know it's ethical
-I knew it was ethical through two processes. First, the data was taken from a government website that states that its purpose is to provide the public with data. The website also provided an API that would allow me to scrape the data. Second, I checked the robots.txt and determined the rules and regulations that were placed on scraping and followed them.
-
+I knew it was ethical through two processes. First, the data was taken from a government website that states that its purpose is to provide the public with data. The website also provided an API that would allow me to more easily scrape the data. Second, I checked the robots.txt and determined the rules and regulations that were placed on scraping and followed them.
 
 ### How I gathered and prepared the data
-First, I found the webpage that contained the data I wanted and obtained an api that I used to scrape data onto my computer as a json file using the library "requests". Then, I used the pandas library to convert the file into a dataframe. After that, I cleaned my data using regex to condense and clarify values, I dropped rows with unknown values, and I converted certain columns into numeric values so I could do arithmetic with them.
-After cleaning the data, I made a new dataset that I can use. This was done by condensing the dataset so that it contained the deaths for both 2019 and 2020 in the same row. I also determined the proportion of deaths (both total and covid) that occured for each age group while grouping by the demographic information. Finally, I also compared how the proportion of total deaths per age group in 2019 compared to the proportion of covid deaths per age group in 2020. This way, my 2019 data acts as a control when I analyze covid deaths.
+First, I found the webpage that contained the data I wanted and obtained an api that I used to scrape data onto my computer as a json file using the library "requests". Then, I used the pandas library to convert the file into a dataframe. After that, I cleaned my data using regex to condense and clarify cell values. I dropped rows with unknown values, and I converted certain columns into numeric values so I could do math with them.
+After cleaning the data, I made a new dataset that I can use. This was done by condensing the dataset so that it contained the deaths for both 2019 and 2020 in the same row. I also determined the proportion of deaths (both total deaths and covid deaths) that occured for each age level while grouping by the demographic information. This was done by finding the total deaths per demographic subgroup and how many deaths occured for each age level. Finally, I also compared how the proportion of total deaths per age group in 2019 compared to the proportion of covid deaths per age group in 2020. This way, my 2019 proportional deaths data acts as a control when I analyze covid deaths.
 
 ### EDA highlights:
 
-#### Some basic summary statitics for my numeric values.
+#### Some basic summary statitics for some numeric values.
 |       |   covid_19_deaths |   prop_dead_covid |   prop_dead_2019 |   prop_change |
 |:------|------------------:|------------------:|-----------------:|--------------:|
 | count |            214    |       214         |     214          | 214           |
@@ -37,7 +36,9 @@ After cleaning the data, I made a new dataset that I can use. This was done by c
 | 75%   |            907    |         0.253918  |       0.21127    |   0.0295659   |
 | max   |          59483    |         0.791629  |       0.72443    |   0.190199    |
 
-#### A look at the average proportional change for each age level for both education level and race.
+#### A look at the average proportional change for each age level grouping on education level and race.
+
+#### Race
 
 | race_or_hispanic_origin   |        0-24 |      25-39 |       40-54 |
 |:--------------------------|------------:|-----------:|------------:|
@@ -48,6 +49,7 @@ After cleaning the data, I made a new dataset that I can use. This was done by c
 | Multiracial               | -0.0683769  | -0.0645841 | -0.0378952  |
 | White                     | -0.00802079 | -0.0211336 | -0.0321271  |
 
+#### Education
 
 | education_level                  |        0-24 |      25-39 |      40-54 |
 |:---------------------------------|------------:|-----------:|-----------:|
@@ -65,7 +67,7 @@ After cleaning the data, I made a new dataset that I can use. This was done by c
 
 ## What are the most interesting findings of your EDA?
 
-What's most interesting to me is the lack of a clear difference in change in proportion of deaths for different education levels. I would have thought that those with less education were more susceptible to deaths from covid. Due to them having greater need to go work (less savings), and also jobs that are less likely to permit remote work. Both of these would have increased exposure to covid.
+What's most interesting to me is the lack of a clear difference in changes to proportion of deaths for different education levels. I thought that those with less education would be more susceptible to deaths from covid. Due to them having greater need to go work (less savings), and also jobs that are less likely to permit remote work. Both of these would have increased exposure to covid and in theory would have also increased deaths.
 
 ## Links to find further information
 [About the data](https://data.cdc.gov/National-Center-for-Health-Statistics/AH-Deaths-by-Educational-Attainment-2019-2020/4ueh-89p9/about_data)
