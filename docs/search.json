@@ -102,11 +102,11 @@
   {
     "objectID": "projects/data-acquisition.html",
     "href": "projects/data-acquisition.html",
-    "title": "Data Acquisition Project",
+    "title": "Data Acquisition",
     "section": "",
-    "text": "This is coming down the pipeline. Check again later.",
+    "text": "I find it very important to understand how the circumstances of someone’s life impacts their health. I am in a human development class where we are learning about how the factors of our lives impact us, both the factors we can and can’t control. In this dataset I have the chance to study how a person’s race and sex, which they can’t control, and a person’s educational status, which they can somewhat control, change how likely they were to be killed by covid. Or to see if it in fact has no impact.",
     "crumbs": [
-      "Data Acquisition Project"
+      "Data Acquisition"
     ]
   },
   {
@@ -188,5 +188,45 @@
     "title": "About Me",
     "section": "Who am I?",
     "text": "Who am I?\nWhen I am not doing statistics or data science, I have a few hobbies that I enjoy. I play basketball regularly and play on an intramural team almost every semester. My wife and I love to dance together, so we will take dance classes at BYU, and will also go to social dance clubs in the area. When unwinding through a less physical activity, I enjoy watching sports and reading books."
+  },
+  {
+    "objectID": "projects/data-acquisition.html#motivating-question",
+    "href": "projects/data-acquisition.html#motivating-question",
+    "title": "Data Acquisition",
+    "section": "Motivating question",
+    "text": "Motivating question\nWhat impact do race, sex, education, and iteractions between the factors have on a person’s chance of dying during the covid epidemic? Are any groups impacted by covid more than others in terms of a change in the proportion of deaths?",
+    "crumbs": [
+      "Data Acquisition"
+    ]
+  },
+  {
+    "objectID": "projects/data-acquisition.html#how-i-know-its-ethical",
+    "href": "projects/data-acquisition.html#how-i-know-its-ethical",
+    "title": "Data Acquisition",
+    "section": "How I know it’s ethical",
+    "text": "How I know it’s ethical\nI knew it was ethical through two processes. First, the data was taken from a government website that states that its purpose is to provide the public with data. The website also provided an API that would allow me to scrape the data. Second, I checked the robots.txt and determined the rules and regulations that were placed on scraping and followed them.\n\nHow I gathered and prepared the data\nFirst, I found the webpage that contained the data I wanted and obtained an api that I used to scrape data onto my computer as a json file using the library “requests”. Then, I used the pandas library to convert the file into a dataframe. After that, I cleaned my data using regex to condense and clarify values, I dropped rows with unknown values, and I converted certain columns into numeric values so I could do arithmetic with them. After cleaning the data, I made a new dataset that I can use. This was done by condensing the dataset so that it contained the deaths for both 2019 and 2020 in the same row. I also determined the proportion of deaths (both total and covid) that occured for each age group while grouping by the demographic information. Finally, I also compared how the proportion of total deaths per age group in 2019 compared to the proportion of covid deaths per age group in 2020. This way, my 2019 data acts as a control when I analyze covid deaths.\n\n\nEDA highlights:\n\nSome basic summary statitics for my numeric values.\n\n\n\n\n\n\n\n\n\n\n\ncovid_19_deaths\nprop_dead_covid\nprop_dead_2019\nprop_change\n\n\n\n\ncount\n214\n214\n214\n214\n\n\nmean\n1743.07\n0.168224\n0.168224\n-1.94548e-19\n\n\nstd\n5754.05\n0.172858\n0.146603\n0.0504982\n\n\nmin\n0\n0\n0.00117369\n-0.178868\n\n\n25%\n33.5\n0.0224849\n0.0605526\n-0.0295447\n\n\n50%\n160\n0.123526\n0.137681\n-0.0104656\n\n\n75%\n907\n0.253918\n0.21127\n0.0295659\n\n\nmax\n59483\n0.791629\n0.72443\n0.190199\n\n\n\n\n\nA look at the average proportional change for each age level for both education level and race.\n\n\n\nrace_or_hispanic_origin\n0-24\n25-39\n40-54\n\n\n\n\nAm. Indian\n-0.0366441\n-0.037238\n-0.0118309\n\n\nAsian\n-0.0194403\n-0.0174561\n-0.0145093\n\n\nBlack\n-0.0236276\n-0.0333654\n-0.0187769\n\n\nHispanic\n-0.0316175\n-0.0369599\n0.00701345\n\n\nMultiracial\n-0.0683769\n-0.0645841\n-0.0378952\n\n\nWhite\n-0.00802079\n-0.0211336\n-0.0321271\n\n\n\n\n\n\n\n\n\n\n\n\neducation_level\n0-24\n25-39\n40-54\n\n\n\n\nAssociate degree or some college\n-0.0202627\n-0.0447806\n-0.0151646\n\n\nBachelor’s degree or more\n-0.00436995\n-0.025146\n-0.019309\n\n\nHigh school graduate/GED or less\n-0.063852\n-0.0354419\n-0.0195895\n\n\n\n\n\nA deeper dive into the different proportional changes.\n\n\nEducation\n\n\n\nRace",
+    "crumbs": [
+      "Data Acquisition"
+    ]
+  },
+  {
+    "objectID": "projects/data-acquisition.html#what-are-the-most-interesting-findings-of-your-eda",
+    "href": "projects/data-acquisition.html#what-are-the-most-interesting-findings-of-your-eda",
+    "title": "Data Acquisition",
+    "section": "What are the most interesting findings of your EDA?",
+    "text": "What are the most interesting findings of your EDA?\nWhat’s most interesting to me is the lack of a clear difference in change in proportion of deaths for different education levels. I would have thought that those with less education were more susceptible to deaths from covid. Due to them having greater need to go work (less savings), and also jobs that are less likely to permit remote work. Both of these would have increased exposure to covid.",
+    "crumbs": [
+      "Data Acquisition"
+    ]
+  },
+  {
+    "objectID": "projects/data-acquisition.html#links-to-find-further-information",
+    "href": "projects/data-acquisition.html#links-to-find-further-information",
+    "title": "Data Acquisition",
+    "section": "Links to find further information",
+    "text": "Links to find further information\nAbout the data\nMy repo for the process",
+    "crumbs": [
+      "Data Acquisition"
+    ]
   }
 ]
